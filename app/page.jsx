@@ -5,24 +5,20 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import headshot from "../public/headshot.png";
 
-const roles = ["Tennis Coach", "Padel Coach", "Sportperson"];
-
 export default function Home() {
-  const [roleIndex, setRoleIndex] = useState(0);
+  const [showFirstSection, setShowFirstSection] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
+    const sectionInterval = setInterval(() => {
+      setShowFirstSection((prev) => !prev);
+    }, 4000);
+    return () => clearInterval(sectionInterval);
   }, []);
 
   const containerVariants = {
     hidden: {},
     show: {
-      transition: {
-        staggerChildren: 0.5,
-      },
+      transition: { staggerChildren: 0.5 },
     },
   };
 
@@ -32,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 py-12">
+    <main className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 py-12 ">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -44,44 +40,73 @@ export default function Home() {
           variants={containerVariants}
           className="text-left space-y-4 max-w-xl w-full"
         >
-          <motion.h1
-            variants={itemVariants}
-            className="text-2xl sm:text-3xl md:text-5xl font-bold text-white"
-          >
-            Hello! I&#39;m
-          </motion.h1>
+          {showFirstSection ? (
+            <>
+              <motion.h1
+                variants={itemVariants}
+                className="text-2xl sm:text-3xl md:text-5xl font-bold text-white"
+              >
+                Skip the Impossible
+              </motion.h1>
+              <motion.h1
+                variants={itemVariants}
+                className="text-3xl sm:text-4xl md:text-6xl font-bold text-white"
+              >
+                Extraordinary
+              </motion.h1>
+              <motion.p
+                variants={itemVariants}
+                className="text-xl sm:text-2xl md:text-3xl font-semibold text-teal-400"
+              >
+                Performance
+              </motion.p>
+            </>
+          ) : (
+            <>
+              <motion.h1
+                variants={itemVariants}
+                className="text-2xl sm:text-3xl md:text-5xl font-bold text-white"
+              >
+                Fastest Growing
+              </motion.h1>
+              <motion.h1
+                variants={itemVariants}
+                className="text-3xl sm:text-4xl md:text-6xl font-bold text-white"
+              >
+                Sport
+              </motion.h1>
+              <motion.p
+                variants={itemVariants}
+                className="text-xl sm:text-2xl md:text-3xl font-semibold text-teal-400"
+              >
+                In Kenya
+              </motion.p>
+            </>
+          )}
 
-          <motion.h1
+          {/* Buttons (common to both sections) */}
+          <motion.div
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white"
+            className="flex flex-wrap gap-4 pt-4"
           >
-            Ronny Sila.
-          </motion.h1>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
+              onClick={() => window.open("/resume.pdf", "_blank")}
+            >
+              Sign Up
+            </motion.button>
 
-          <motion.p
-            key={roleIndex}
-            variants={itemVariants}
-            className="text-xl sm:text-2xl md:text-3xl font-semibold text-teal-400"
-          >
-            {roles[roleIndex]}
-          </motion.p>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-base font-bold sm:text-lg md:text-xl text-neutral-300"
-          >
-            I am a Passionate and dedicated padel and tennis coach with a strong background in player development, fitness training, and strategic game improvement. Seeking to contribute my expertise in coaching and mentoring players of all levels to a dynamic sports academy or club.
-          </motion.p>
-
-          <motion.button
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-4 px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
-            onClick={() => window.open("/resume.pdf", "_blank")}
-          >
-          My CV
-          </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
+              onClick={() => window.open("/resume.pdf", "_blank")}
+            >
+              Book A Session
+            </motion.button>
+          </motion.div>
         </motion.div>
 
         {/* Image Section */}
