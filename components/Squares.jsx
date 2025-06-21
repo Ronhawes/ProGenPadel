@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 
 const Squares = ({
-  direction = "right",
+  direction = "diagnonal",
   speed = 1,
   borderColor = "#999",
   squareSize = 40,
