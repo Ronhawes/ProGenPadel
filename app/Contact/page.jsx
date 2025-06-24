@@ -81,7 +81,7 @@ const ContactForm = () => {
             They Call Me the Spin Expert
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white mb-4">
-            Feel free to contact me on whatsapp via; +254794906146
+            Feel free to contact me on  via; +254794906146
           </p>
           <button
             onClick={() => setShowForm(true)}
