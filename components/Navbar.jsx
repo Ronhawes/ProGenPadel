@@ -45,10 +45,10 @@ export const Navbar = () => {
           {/* Desktop Navigation Links */}
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
             {[
-              { name: "About", href: "/about" },
               
-              { name: "Skills", href: "/resources" },
-              { name: "Contact_Me", href: "/Contact" },
+              { name: "Log_in", href: "/Log_in" },
+              { name: "Sign_up", href: "/Sign_up" },
+              
             ].map(({ name, href }) => (
               <Link
                 key={name}
@@ -105,9 +105,9 @@ export const Navbar = () => {
             </div>
             <div className="py-6 px-5 space-y-4">
               {[
-                { name: "About", href: "/about" },                
-                { name: "Skills", href: "/resources" },
-                { name: "Contact_Me", href: "/Contact" },
+                                
+                { name: "Log_in", href: "/Log_in" },
+                { name: "Sign_up", href: "/Sign_up" },
               ].map(({ name, href }) => (
                 <Link
                   key={name}
