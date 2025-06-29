@@ -46,8 +46,8 @@ export const Navbar = () => {
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
             {[
               
-              { name: "Log_in", href: "/Log_in" },
-              { name: "Sign_up", href: "/Sign_up" },
+              { name: "LogIn", href: "/LogIn" },
+              { name: "SigUp", href: "/SignUp" },
               
             ].map(({ name, href }) => (
               <Link
@@ -106,8 +106,8 @@ export const Navbar = () => {
             <div className="py-6 px-5 space-y-4">
               {[
                                 
-                { name: "Log_in", href: "/Log_in" },
-                { name: "Sign_up", href: "/Sign_up" },
+                { name: "LogIn", href: "/LogIn" },
+                { name: "SignUp", href: "/SignUp" },
               ].map(({ name, href }) => (
                 <Link
                   key={name}
