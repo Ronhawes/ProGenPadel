@@ -36,13 +36,15 @@ model Coaches {
 }
 
 model Courts {
-  id         BigInt     @id @default(autoincrement())
-  created_at DateTime   @default(now()) @db.Timestamptz(6)
-  name       String?
-  charges    BigInt?
-  club_id    BigInt?
-  Club       Club?      @relation(fields: [club_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Sessions   Sessions[]
+  id             BigInt     @id @default(autoincrement())
+  created_at     DateTime   @default(now()) @db.Timestamptz(6)
+  name           String?
+  charges        BigInt?
+  club_id        BigInt?
+  peak_hours     String[]
+  off_peak_hours String[]
+  Club           Club?      @relation(fields: [club_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Sessions       Sessions[]
 }
 
 model Event {
@@ -82,6 +84,7 @@ model Sessions {
   coach_id   BigInt?
   court_id   BigInt?
   club_id    BigInt?
+  time       String[]
   Club       Club?    @relation(fields: [club_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Coaches    Coaches? @relation(fields: [coach_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Courts     Courts?  @relation(fields: [court_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
