@@ -85,10 +85,10 @@ model Sessions {
   court_id   BigInt?
   club_id    BigInt?
   time       String[]
-  Club       Club?    @relation(fields: [club_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Coaches    Coaches? @relation(fields: [coach_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Courts     Courts?  @relation(fields: [court_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Players    Players? @relation(fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Club       Club?    @relation(fields: [club_id], references: [id])
+  Coaches    Coaches? @relation(fields: [coach_id], references: [id])
+  Courts     Courts?  @relation(fields: [court_id], references: [id])
+  Players    Players? @relation(fields: [player_id], references: [id])
 }
 
 model passwordResetToken {

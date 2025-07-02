@@ -46,15 +46,16 @@ export async function POST(req) {
     }
 
     // Create session - assuming your Sessions model is also plural
-    const session = await prisma.sessions.create({
+       const session = await prisma.sessions.create({
   data: {
-    player_id: playerId,
-    club_id: clubId,
-    court_id: courtId,
-    coach_id: coachId,
     time,
+    Club: { connect: { id: clubId } },
+    Courts: { connect: { id: courtId } },
+    Players: { connect: { id: playerId } },
+    Coaches: coachId ? { connect: { id: coachId } } : undefined,
   },
 });
+
 
 
     // Format response
@@ -64,7 +65,7 @@ export async function POST(req) {
       court_id: courtId.toString(),
       club_id: clubId.toString(),
       time: session.time,
-      player_name: player.fullName,
+      player_name: player.name,
       club_name: club.name,
       charges: court.charges?.toString() || 'N/A', // Now correctly referencing court.charges
       court_name: court.name || 'N/A'

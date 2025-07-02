@@ -96,7 +96,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
-                onClick={() => window.open("/resume.pdf", "_blank")}
+                onClick={() => window.open("", "_blank")}
               >
                 Sign Up
               </motion.button>
@@ -105,7 +105,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
-                onClick={() => window.open("/resume.pdf", "_blank")}
+                onClick={() => window.open("", "_blank")}
               >
                 Book A Session
               </motion.button>
