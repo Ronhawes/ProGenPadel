@@ -207,6 +207,49 @@
   resolved "https://registry.npmjs.org/@prisma/client/-/client-6.11.0.tgz"
   integrity sha512-K9TkKepOYvCOg3qCuKz7ZHf6rf58BFKi08plKjU4qVv9y7/UxO6tLz7PlWcgODUZKURLPmRHjHERffIx/8az4w==
 
+"@prisma/config@6.11.0":
+  version "6.11.0"
+  resolved "https://registry.npmjs.org/@prisma/config/-/config-6.11.0.tgz"
+  integrity sha512-icBfutMpdrwSf2ggo012zhQ4oianijXL/UPbv4PNVK3WUWbB3/F5Ltq8ZfElGrtwKC6XuFFPxU5qDC9x7vh8zQ==
+  dependencies:
+    jiti "2.4.2"
+
+"@prisma/debug@6.11.0":
+  version "6.11.0"
+  resolved "https://registry.npmjs.org/@prisma/debug/-/debug-6.11.0.tgz"
+  integrity sha512-zo4oEZMWMt0BFWl+4NK9FUpaEOmjGR3y2/r0lkW/DK4BUBRgMj90s8QqK2K+vXG3xn0nAGg2kOSu+Swn60CFLg==
+
+"@prisma/engines-version@6.11.0-18.9c30299f5a0ea26a96790e13f796dc6094db3173":
+  version "6.11.0-18.9c30299f5a0ea26a96790e13f796dc6094db3173"
+  resolved "https://registry.npmjs.org/@prisma/engines-version/-/engines-version-6.11.0-18.9c30299f5a0ea26a96790e13f796dc6094db3173.tgz"
+  integrity sha512-M3vbyDICFIA1oJl0cFkM0omD4HsJZjFi0hu0f0UxyPABH8KEcZyUd5BToCrNl4B8lUeQn+L5+gfaQleOKp6Lrg==
+
+"@prisma/engines@6.11.0":
+  version "6.11.0"
+  resolved "https://registry.npmjs.org/@prisma/engines/-/engines-6.11.0.tgz"
+  integrity sha512-uqnYxvPKZPvYZA7F0q4gTR+fVWUJSY5bif7JAKBIOD5SoRRy0qEIaPy4Nna5WDLQaFGshaY/Bh8dLOQMfxhJJw==
+  dependencies:
+    "@prisma/debug" "6.11.0"
+    "@prisma/engines-version" "6.11.0-18.9c30299f5a0ea26a96790e13f796dc6094db3173"
+    "@prisma/fetch-engine" "6.11.0"
+    "@prisma/get-platform" "6.11.0"
+
+"@prisma/fetch-engine@6.11.0":
+  version "6.11.0"
+  resolved "https://registry.npmjs.org/@prisma/fetch-engine/-/fetch-engine-6.11.0.tgz"
+  integrity sha512-ZHHSP7vJFo5hePH+MNovxhqXabIg38ZpCwQfUBON29kwPX3f1pjYnzGpgJLCJy4k7mKGOzTgrXPqH8+nJvq2fw==
+  dependencies:
+    "@prisma/debug" "6.11.0"
+    "@prisma/engines-version" "6.11.0-18.9c30299f5a0ea26a96790e13f796dc6094db3173"
+    "@prisma/get-platform" "6.11.0"
+
+"@prisma/get-platform@6.11.0":
+  version "6.11.0"
+  resolved "https://registry.npmjs.org/@prisma/get-platform/-/get-platform-6.11.0.tgz"
+  integrity sha512-yspBGvOfJQwuoApk5B4aBlHDy6YDXAOe4Ml8U2eZ+M2b7fDd10YDomS3Q4qrYHUUVYF3TJyN86NcnRMOvCMUrA==
+  dependencies:
+    "@prisma/debug" "6.11.0"
+
 "@react-three/drei@^10.1.2":
   version "10.1.2"
   resolved "https://registry.npmjs.org/@react-three/drei/-/drei-10.1.2.tgz"
@@ -2046,6 +2089,11 @@ jiti@^1.21.6:
   resolved "https://registry.npmjs.org/jiti/-/jiti-1.21.7.tgz"
   integrity sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==
 
+jiti@2.4.2:
+  version "2.4.2"
+  resolved "https://registry.npmjs.org/jiti/-/jiti-2.4.2.tgz"
+  integrity sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==
+
 js-sdsl@^4.1.4:
   version "4.4.2"
   resolved "https://registry.npmjs.org/js-sdsl/-/js-sdsl-4.4.2.tgz"
@@ -2588,6 +2636,14 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
+
+prisma@^6.11.0:
+  version "6.11.0"
+  resolved "https://registry.npmjs.org/prisma/-/prisma-6.11.0.tgz"
+  integrity sha512-gI69E7fusgk32XALpXzdgR10xUx2aFnHiu/JaUo4O07G4JvFT0xNtD0Iy81p37iBLTYFEhWa9VrHKXaiyZ5fLQ==
+  dependencies:
+    "@prisma/config" "6.11.0"
+    "@prisma/engines" "6.11.0"
 
 promise-worker-transferable@^1.0.4:
   version "1.0.4"

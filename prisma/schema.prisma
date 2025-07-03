@@ -72,6 +72,7 @@ model Players {
   picture    String?
   email      String?    @unique
   password   String?    @db.VarChar
+  age        BigInt?
   Club       Club?      @relation(fields: [club_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Sessions   Sessions[]
 }
@@ -85,6 +86,7 @@ model Sessions {
   court_id   BigInt?
   club_id    BigInt?
   time       String[]
+  peak_hours Boolean?
   Club       Club?    @relation(fields: [club_id], references: [id])
   Coaches    Coaches? @relation(fields: [coach_id], references: [id])
   Courts     Courts?  @relation(fields: [court_id], references: [id])
