@@ -1,12 +1,16 @@
 "use client";
 
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import headshot from "../public/headshot.png";
 import ResourcesPage from "./resources/page";
+import { useRouter } from "next/navigation"; // ✅ Correct for app directory
+
 
 export default function Home() {
+  const router=useRouter();
   const [showFirstSection, setShowFirstSection] = useState(true);
 
   useEffect(() => {
@@ -45,7 +49,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="mt-4 px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
-                    onClick={() => router.push("/Dashboard/PlayerPage/update")}
+                    onClick={() => router.push("/LogIn")}
                   >
                     Book A Session
                   </motion.button>
