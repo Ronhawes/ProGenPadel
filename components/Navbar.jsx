@@ -4,12 +4,14 @@ import { IoTennisball } from "react-icons/io5";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 import { usePathname } from "next/navigation";
+import SplashCursor from "./SplashCursor";
 
 export const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <Popover className="fixed top-0 z-50 w-full bg-transparent">
+    <>
+        <Popover className="fixed top-0 z-50 w-full bg-transparent">
       <div className="mx-auto max-w-7xl ">
         <div className="flex items-center justify-between py-4 md:justify-start md:space-x-10">
           {/* Logo Section */}
@@ -126,5 +128,7 @@ export const Navbar = () => {
         </Popover.Panel>
       </Transition>
     </Popover>
+    <SplashCursor/>
+    </>
   );
 };
