@@ -83,12 +83,15 @@ export default function Home() {
         <ResourcesPage />
          {/*coaches section */}
 
-         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white px-16">
-                    Our Coaches
-                  </h1>
-                  <p className="text-lg sm:text-xl text-teal-400 font-semibold">
-                    Explore  and see our talented coaches.
-                  </p>
+         <section className="flex flex-col items-center justify-center text-center py-16">
+  <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white">
+    Our team
+  </h1>
+  <p className="text-lg sm:text-xl text-teal-400 font-semibold mt-4">
+    Meet Our Team.
+  </p>
+</section>
+
         <div style={{ height: '600px', position: 'relative' }}>
                   <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02}/>
         </div>

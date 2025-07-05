@@ -4,12 +4,26 @@
 import coach1 from "@/public/coach1.png";
 import coach2 from "@/public/coach2.png";
 import coach3 from "@/public/coach3.png";
+
 import coach4 from "@/public/coach4.png";
+import coach5 from "@/public/coach5.png";
+import coach6 from "@/public/coach6.png";
+import coach7 from "@/public/coach7.png";
+import coach8 from "@/public/coach8.png";
+import coach9 from "@/public/coach9.png";
+import coach10 from "@/public/coach10.png";
+
 
 const Coach1Url = coach1.src || coach1;
 const Coach2Url = coach2.src || coach2;
 const Coach3Url = coach3.src || coach3;
 const Coach4Url = coach4.src || coach4;
+const Coach5Url = coach5.src || coach5;
+const Coach6Url = coach6.src || coach6;
+const Coach7Url = coach7.src || coach7;
+const Coach8Url = coach8.src || coach8;
+const Coach9Url = coach9.src || coach9;
+const Coach10Url = coach10.src || coach10;
 
 import {
 	Camera,
@@ -376,16 +390,16 @@ class App {
 	createMedias(items, bend = 1, textColor, borderRadius, font) {
 		const defaultItems = [
 			{
-				image: `https://picsum.photos/seed/1/800/600?grayscale`,
-				text: "Sally",
+				image: Coach10Url,
+				text: "Padel Vibes And Inshallah",
 			},
 			{
 				image: Coach1Url,
 				text: "Andana",
 			},
 			{
-				image: `https://picsum.photos/seed/3/800/600?grayscale`,
-				text: "Waterfall",
+				image: Coach9Url,
+				text: "Our players",
 			},
 			{
 				image: Coach2Url,
@@ -393,28 +407,28 @@ class App {
 			},
 			
 			{
-				image: `https://picsum.photos/seed/16/800/600?grayscale`,
-				text: "Magret",
+				image: Coach8Url,
+				text: "Women in padel",
 			},
 			{
 				image: Coach3Url,
 				text: "Partick mouratoglou",
 			},
 			{
-				image: `https://picsum.photos/seed/8/800/600?grayscale`,
+				image: Coach7Url,
 				text: "Jonnhy",
 			},
 			{
 				image: Coach4Url,
-				text: "Anitar Rose",
+				text: "Our Top Player",
 			},
 			
 			{
-				image: `https://picsum.photos/seed/21/800/600?grayscale`,
-				text: "Mamba",
+				image: Coach5Url,
+				text: "Mamba-Mentality",
 			},
 			{
-				image: `https://picsum.photos/seed/12/800/600?grayscale`,
+				image: Coach6Url,
 				text: "Palmer",
 			},
 		];
