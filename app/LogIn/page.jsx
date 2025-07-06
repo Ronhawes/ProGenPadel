@@ -31,13 +31,20 @@ const LoginPage = () => {
       localStorage.setItem("userId", data.id);
 
       // Redirect based on role
-      if (role === 'Player') {
-        router.push('/Dashboard/PlayerPage');
-      } else if (role === 'Coach') {
-        router.push('/Dashboard/CoachPage');
-      } else {
-        router.push('/Dashboard/ClubPage');
-      }
+       if (role === 'Player') {
+  localStorage.setItem("playerId", data.id);
+  localStorage.setItem("playerName", data.name);
+  router.push('/Dashboard/PlayerPage');
+} else if (role === 'Coach') {
+  localStorage.setItem("coachId", data.id);
+  localStorage.setItem("coachName", data.name);
+  router.push('/Dashboard/CoachPage');
+} else {
+  localStorage.setItem("clubId", data.id);
+  localStorage.setItem("clubName", data.name);
+  router.push('/Dashboard/ClubPage');
+}
+
 
     } catch (err) {
       alert(err.message);
@@ -81,7 +88,7 @@ const LoginPage = () => {
             name="role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="w-full px-4 py-3 rounded bg-white/20 text-black border border-white/20 backdrop-blur-sm"
+            className="w-full px-4 py-3 rounded bg-balck text-teal-400 border border-white/20 backdrop-blur-sm"
           >
             <option value="Player">Player</option>
             <option value="Coach">Coach</option>
