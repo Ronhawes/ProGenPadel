@@ -10,6 +10,7 @@ const LoginPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
   const [showForgotPrompt, setShowForgotPrompt] = useState(false);
+  const [role, setRole] = useState('Player'); // New role selection
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -21,14 +22,23 @@ const LoginPage = () => {
     const password = formData.get('password');
 
     try {
-      const res = await fetch(`/api/Login/Player?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+      const res = await fetch(`/api/Login/${role}?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Login failed');
 
       setSubmitted(true);
-      localStorage.setItem("playerName", data.name);
-      localStorage.setItem("playerId", data.id);
-      router.push('/Dashboard/PlayerPage');
+      localStorage.setItem("userName", data.name);
+      localStorage.setItem("userId", data.id);
+
+      // Redirect based on role
+      if (role === 'Player') {
+        router.push('/Dashboard/PlayerPage');
+      } else if (role === 'Coach') {
+        router.push('/Dashboard/CoachPage');
+      } else {
+        router.push('/Dashboard/ClubPage');
+      }
+
     } catch (err) {
       alert(err.message);
     } finally {
@@ -61,6 +71,22 @@ const LoginPage = () => {
           <Image src={headshot} alt="Headshot" width={120} height={120} className="rounded-full shadow-lg" />
           <h2 className="text-xl sm:text-3xl font-bold text-teal-300 mt-4">Welcome Back</h2>
           <p className="text-white text-sm sm:text-base">Please log in to continue</p>
+        </div>
+
+        {/* Role Selection */}
+        <div>
+          <label htmlFor="role" className="block font-semibold mb-1 text-white">Login as</label>
+          <select
+            id="role"
+            name="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="w-full px-4 py-3 rounded bg-white/20 text-black border border-white/20 backdrop-blur-sm"
+          >
+            <option value="Player">Player</option>
+            <option value="Coach">Coach</option>
+            <option value="Club">Club</option>
+          </select>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
