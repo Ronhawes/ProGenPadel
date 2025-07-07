@@ -55,7 +55,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="mt-4 px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
-                    onClick={() => router.push("/LogIn")}
+                    onClick={() => router.push("/Sessions")}
                   >
                     Book A Session
                   </motion.button>

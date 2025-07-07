@@ -1,11 +1,13 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import Image from "next/image";
 import DecayCard from "@/page.jsx/DecayCard/DecayCard";
 import { format } from "date-fns";
 import headshot from "../../public/headshot.png";
+
 
 const hours = Array.from({ length: 16 }, (_, i) => i + 7);
 
