@@ -20,6 +20,7 @@ const Session = () => {
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState(null);
 
   const bookings = {
     "Court 1": [9, 10],
@@ -49,10 +50,7 @@ const Session = () => {
       const response = await fetch("/api/Sessions/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          time: ["22:00"],
-        }),
+        body: JSON.stringify(formData),
       });
       if (response.ok) {
         setSubmitted(true);
@@ -86,132 +84,133 @@ const Session = () => {
         </div>
       </section>
 
-      <div className="mb-8 text-center">
-        <label className="text-lg mr-3">Select Date:</label>
-        <input
-          type="date"
-          value={format(selectedDate, "yyyy-MM-dd")}
-          onChange={handleDateChange}
-          className="text-black px-4 py-2 rounded-lg"
-        />
+      <div className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col">
+          <label className="text-lg mb-1 text-white">Select Date:</label>
+          <input
+            type="date"
+            value={format(selectedDate, "yyyy-MM-dd")}
+            onChange={handleDateChange}
+            className="text-black px-4 py-2 rounded-lg"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="club_id" className="text-lg mb-1 text-white">Select Club:</label>
+          <select
+            id="club_id"
+            required
+            value={formData.club_id}
+            onChange={handleChange}
+            className="text-black px-4 py-2 rounded-lg"
+          >
+            <option value="">Select your club</option>
+            <option value="1">Goan</option>
+            <option value="2">Padel254</option>
+            <option value="3">Premium</option>
+            <option value="4">Padelpoint</option>
+            <option value="5">Nanyuki</option>
+          </select>
+        </div>
       </div>
 
       {/* Table */}
-<div className="w-full px-4 sm:px-8">
-  <div className="overflow-x-auto mx-auto max-w-5xl">
-    <div className="min-w-[700px]">
-      <table className="text-sm border-collapse text-center w-full table-fixed">
-        <thead>
-          <tr className="bg-teal-700 text-white">
-            <th className="border px-1 py-2 w-20">Court</th>
-            {hours.map((hour) => (
-              <th key={hour} className="border px-1 py-2 w-16">
-                {hour}:00
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {courts.map((court) => (
-            <tr key={court}>
-              <td className="border px-1 py-2 font-semibold w-20">{court}</td>
-              {hours.map((hour) => {
-                const booked = isBooked(court, hour);
-                const mine = isMine(court, hour);
-                const bgColor = mine
-                  ? "bg-green-500"
-                  : booked
-                  ? "bg-blue-500"
-                  : "bg-white";
+      <div className="w-full px-4 sm:px-8">
+        <div className="overflow-x-auto mx-auto max-w-5xl">
+          <div className="min-w-[700px]">
+            <table className="text-sm border-collapse text-center w-full table-fixed">
+              <thead>
+                <tr className="bg-teal-700 text-white">
+                  <th className="border px-1 py-2 w-20">Court</th>
+                  {hours.map((hour) => (
+                    <th key={hour} className="border px-1 py-2 w-16">
+                      {hour}:00
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {courts.map((court) => (
+                  <tr key={court}>
+                    <td className="border px-1 py-2 font-semibold w-20">{court}</td>
+                    {hours.map((hour) => {
+                      const booked = isBooked(court, hour);
+                      const mine = isMine(court, hour);
+                      const bgColor = mine
+                        ? "bg-green-500"
+                        : booked
+                        ? "bg-blue-500"
+                        : "bg-white";
 
-                const textColor = mine || booked ? "text-white" : "text-black";
+                      const textColor = mine || booked ? "text-white" : "text-black";
+                      const isDisabled = booked || mine;
 
-                return (
-                  <td
-                    key={`${court}-${hour}`}
-                    className={`border px-2 py-8 w-16 ${bgColor} ${textColor}`}
-                  >
-                    {/* Slot */}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-      <div className="min-h-screen flex items-center justify-center p-2">
-        <div className="w-full max-w-md p-6 sm:p-8 rounded-2xl border border-white/30 shadow-2xl bg-white/10 backdrop-blur-lg text-black space-y-6">
-          <div className="flex flex-col items-center text-center">
-            <Image src={headshot} alt="Headshot" width={120} height={120} className="rounded-full shadow-lg" />
-            <h2 className="text-xl sm:text-3xl font-bold text-teal-300 mt-4">Book a Session</h2>
-            <p className="text-white text-sm sm:text-base">Fill the form below to reserve your spot</p>
+                      return (
+                        <td
+                          key={`${court}-${hour}`}
+                          className={`border px-2 py-8 w-16 cursor-pointer ${bgColor} ${textColor} ${
+                            isDisabled ? "opacity-60 cursor-not-allowed" : "hover:ring-2 ring-yellow-300"
+                          }`}
+                          onClick={() => {
+                            if (!isDisabled) {
+                              setSelectedSlot({ court, hour });
+                              setFormData({
+                                ...formData,
+                                time: [`${hour}:00`],
+                                court_id: `${courts.indexOf(court) + 1}`
+                              });
+                              setSubmitted(false);
+                            }
+                          }}
+                        ></td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label htmlFor="player_email" className="block font-semibold mb-1 text-white">Email</label>
-              <input
-                id="player_email"
-                type="email"
-                required
-                value={formData.player_email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded bg-white/20 text-black border border-white/20 backdrop-blur-sm placeholder:text-black/60"
-                placeholder="your@email.com"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="club_id" className="block font-semibold mb-1 text-white">Club</label>
-              <select
-                id="club_id"
-                required
-                value={formData.club_id}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded bg-white/20 text-black border border-white/20 backdrop-blur-sm"
-              >
-                <option value="">Select your club</option>
-                <option value="1">Goan</option>
-                <option value="2">Padel254</option>
-                <option value="3">Premium</option>
-                <option value="4">Padelpoint</option>
-                <option value="5">Nanyuki</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="court_id" className="block font-semibold mb-1 text-white">Court</label>
-              <select
-                id="court_id"
-                required
-                value={formData.court_id}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded bg-white/20 text-black border border-white/20 backdrop-blur-sm"
-              >
-                <option value="">Select your court</option>
-                <option value="1">Court 1</option>
-                <option value="2">Court 2</option>
-                <option value="3">Court 3</option>
-              </select>
-            </div>
-
-            <button
-              type="submit"
-              className={`w-full py-3 rounded font-semibold text-white transition ${
-                submitted ? "bg-green-600" : "bg-black hover:bg-gray-800"
-              }`}
-              disabled={loading || submitted}
-            >
-              {submitted ? "Session Booked ✅" : loading ? "Booking..." : "Book Session"}
-            </button>
-          </form>
         </div>
       </div>
+
+      {selectedSlot && (
+        <div className="min-h-screen flex items-center justify-center p-2 mt-10">
+          <div className="w-full max-w-md p-6 sm:p-8 rounded-2xl border border-white/30 shadow-2xl bg-white/10 backdrop-blur-lg text-black space-y-6">
+            <div className="flex flex-col items-center text-center">
+              <Image src={headshot} alt="Headshot" width={120} height={120} className="rounded-full shadow-lg" />
+              <h2 className="text-xl sm:text-3xl font-bold text-teal-300 mt-4">Book a Session</h2>
+              <p className="text-white text-sm sm:text-base">
+                You selected <span className="text-yellow-300">{selectedSlot.court}</span> at <span className="text-yellow-300">{selectedSlot.hour}:00</span>
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="player_email" className="block font-semibold mb-1 text-white">Email</label>
+                <input
+                  id="player_email"
+                  type="email"
+                  required
+                  value={formData.player_email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded bg-white/20 text-black border border-white/20 backdrop-blur-sm placeholder:text-black/60"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className={`w-full py-3 rounded font-semibold text-white transition ${
+                  submitted ? "bg-green-600" : "bg-black hover:bg-gray-800"
+                }`}
+                disabled={loading || submitted}
+              >
+                {submitted ? "Session Booked ✅" : loading ? "Booking..." : "Book Session"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
