@@ -80,7 +80,7 @@ const UpdateClubForm = () => {
             Update Club Credentials
           </h2>
           <p className="text-white text-sm sm:text-base">
-            Change your club's password
+            Change your club&#39;s password
           </p>
         </div>
 
