@@ -35,12 +35,7 @@ export default function RootLayout({ children }) {
           }}
         />
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100vh", zIndex: -2 }}>
- <Aurora
-  colorStops={["#F7F7F7", "#F78C7D", "#F7F7F7"]}
-  blend={0.5}
-  amplitude={1.0}
-  speed={0.5}
-/>
+
 </div>
 
 

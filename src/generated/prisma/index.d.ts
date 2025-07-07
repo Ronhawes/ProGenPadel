@@ -15,37 +15,37 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 /**
  * Model Club
- * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ * 
  */
 export type Club = $Result.DefaultSelection<Prisma.$ClubPayload>
 /**
  * Model Coaches
- * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ * 
  */
 export type Coaches = $Result.DefaultSelection<Prisma.$CoachesPayload>
 /**
  * Model Courts
- * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ * 
  */
 export type Courts = $Result.DefaultSelection<Prisma.$CourtsPayload>
 /**
  * Model Event
- * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ * 
  */
 export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
 /**
  * Model Events
- * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ * 
  */
 export type Events = $Result.DefaultSelection<Prisma.$EventsPayload>
 /**
  * Model Players
- * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ * 
  */
 export type Players = $Result.DefaultSelection<Prisma.$PlayersPayload>
 /**
  * Model Sessions
- * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+ * 
  */
 export type Sessions = $Result.DefaultSelection<Prisma.$SessionsPayload>
 /**
@@ -316,8 +316,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.11.0
+   * Query Engine version: 9c30299f5a0ea26a96790e13f796dc6094db3173
    */
   export type PrismaVersion = {
     client: string
@@ -1710,6 +1710,8 @@ export namespace Prisma {
     club_manager: number
     email: number
     password: number
+    peak_hours: number
+    off_peak_hrs: number
     _all: number
   }
 
@@ -1747,6 +1749,8 @@ export namespace Prisma {
     club_manager?: true
     email?: true
     password?: true
+    peak_hours?: true
+    off_peak_hrs?: true
     _all?: true
   }
 
@@ -1843,6 +1847,8 @@ export namespace Prisma {
     club_manager: string | null
     email: string | null
     password: string | null
+    peak_hours: string[]
+    off_peak_hrs: string[]
     _count: ClubCountAggregateOutputType | null
     _avg: ClubAvgAggregateOutputType | null
     _sum: ClubSumAggregateOutputType | null
@@ -1871,6 +1877,8 @@ export namespace Prisma {
     club_manager?: boolean
     email?: boolean
     password?: boolean
+    peak_hours?: boolean
+    off_peak_hrs?: boolean
     Coaches?: boolean | Club$CoachesArgs<ExtArgs>
     Courts?: boolean | Club$CourtsArgs<ExtArgs>
     Event?: boolean | Club$EventArgs<ExtArgs>
@@ -1886,6 +1894,8 @@ export namespace Prisma {
     club_manager?: boolean
     email?: boolean
     password?: boolean
+    peak_hours?: boolean
+    off_peak_hrs?: boolean
   }, ExtArgs["result"]["club"]>
 
   export type ClubSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1895,6 +1905,8 @@ export namespace Prisma {
     club_manager?: boolean
     email?: boolean
     password?: boolean
+    peak_hours?: boolean
+    off_peak_hrs?: boolean
   }, ExtArgs["result"]["club"]>
 
   export type ClubSelectScalar = {
@@ -1904,9 +1916,11 @@ export namespace Prisma {
     club_manager?: boolean
     email?: boolean
     password?: boolean
+    peak_hours?: boolean
+    off_peak_hrs?: boolean
   }
 
-  export type ClubOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "name" | "club_manager" | "email" | "password", ExtArgs["result"]["club"]>
+  export type ClubOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "name" | "club_manager" | "email" | "password" | "peak_hours" | "off_peak_hrs", ExtArgs["result"]["club"]>
   export type ClubInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Coaches?: boolean | Club$CoachesArgs<ExtArgs>
     Courts?: boolean | Club$CourtsArgs<ExtArgs>
@@ -1934,6 +1948,8 @@ export namespace Prisma {
       club_manager: string | null
       email: string | null
       password: string | null
+      peak_hours: string[]
+      off_peak_hrs: string[]
     }, ExtArgs["result"]["club"]>
     composites: {}
   }
@@ -2368,6 +2384,8 @@ export namespace Prisma {
     readonly club_manager: FieldRef<"Club", 'String'>
     readonly email: FieldRef<"Club", 'String'>
     readonly password: FieldRef<"Club", 'String'>
+    readonly peak_hours: FieldRef<"Club", 'String[]'>
+    readonly off_peak_hrs: FieldRef<"Club", 'String[]'>
   }
     
 
@@ -4128,6 +4146,8 @@ export namespace Prisma {
     name: number
     charges: number
     club_id: number
+    peak_hours: number
+    off_peak_hours: number
     _all: number
   }
 
@@ -4166,6 +4186,8 @@ export namespace Prisma {
     name?: true
     charges?: true
     club_id?: true
+    peak_hours?: true
+    off_peak_hours?: true
     _all?: true
   }
 
@@ -4261,6 +4283,8 @@ export namespace Prisma {
     name: string | null
     charges: bigint | null
     club_id: bigint | null
+    peak_hours: string[]
+    off_peak_hours: string[]
     _count: CourtsCountAggregateOutputType | null
     _avg: CourtsAvgAggregateOutputType | null
     _sum: CourtsSumAggregateOutputType | null
@@ -4288,6 +4312,8 @@ export namespace Prisma {
     name?: boolean
     charges?: boolean
     club_id?: boolean
+    peak_hours?: boolean
+    off_peak_hours?: boolean
     Club?: boolean | Courts$ClubArgs<ExtArgs>
     Sessions?: boolean | Courts$SessionsArgs<ExtArgs>
     _count?: boolean | CourtsCountOutputTypeDefaultArgs<ExtArgs>
@@ -4299,6 +4325,8 @@ export namespace Prisma {
     name?: boolean
     charges?: boolean
     club_id?: boolean
+    peak_hours?: boolean
+    off_peak_hours?: boolean
     Club?: boolean | Courts$ClubArgs<ExtArgs>
   }, ExtArgs["result"]["courts"]>
 
@@ -4308,6 +4336,8 @@ export namespace Prisma {
     name?: boolean
     charges?: boolean
     club_id?: boolean
+    peak_hours?: boolean
+    off_peak_hours?: boolean
     Club?: boolean | Courts$ClubArgs<ExtArgs>
   }, ExtArgs["result"]["courts"]>
 
@@ -4317,9 +4347,11 @@ export namespace Prisma {
     name?: boolean
     charges?: boolean
     club_id?: boolean
+    peak_hours?: boolean
+    off_peak_hours?: boolean
   }
 
-  export type CourtsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "name" | "charges" | "club_id", ExtArgs["result"]["courts"]>
+  export type CourtsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "name" | "charges" | "club_id" | "peak_hours" | "off_peak_hours", ExtArgs["result"]["courts"]>
   export type CourtsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Club?: boolean | Courts$ClubArgs<ExtArgs>
     Sessions?: boolean | Courts$SessionsArgs<ExtArgs>
@@ -4344,6 +4376,8 @@ export namespace Prisma {
       name: string | null
       charges: bigint | null
       club_id: bigint | null
+      peak_hours: string[]
+      off_peak_hours: string[]
     }, ExtArgs["result"]["courts"]>
     composites: {}
   }
@@ -4774,6 +4808,8 @@ export namespace Prisma {
     readonly name: FieldRef<"Courts", 'String'>
     readonly charges: FieldRef<"Courts", 'BigInt'>
     readonly club_id: FieldRef<"Courts", 'BigInt'>
+    readonly peak_hours: FieldRef<"Courts", 'String[]'>
+    readonly off_peak_hours: FieldRef<"Courts", 'String[]'>
   }
     
 
@@ -7398,11 +7434,13 @@ export namespace Prisma {
   export type PlayersAvgAggregateOutputType = {
     id: number | null
     club_id: number | null
+    age: number | null
   }
 
   export type PlayersSumAggregateOutputType = {
     id: bigint | null
     club_id: bigint | null
+    age: bigint | null
   }
 
   export type PlayersMinAggregateOutputType = {
@@ -7413,6 +7451,7 @@ export namespace Prisma {
     picture: string | null
     email: string | null
     password: string | null
+    age: bigint | null
   }
 
   export type PlayersMaxAggregateOutputType = {
@@ -7423,6 +7462,7 @@ export namespace Prisma {
     picture: string | null
     email: string | null
     password: string | null
+    age: bigint | null
   }
 
   export type PlayersCountAggregateOutputType = {
@@ -7433,6 +7473,7 @@ export namespace Prisma {
     picture: number
     email: number
     password: number
+    age: number
     _all: number
   }
 
@@ -7440,11 +7481,13 @@ export namespace Prisma {
   export type PlayersAvgAggregateInputType = {
     id?: true
     club_id?: true
+    age?: true
   }
 
   export type PlayersSumAggregateInputType = {
     id?: true
     club_id?: true
+    age?: true
   }
 
   export type PlayersMinAggregateInputType = {
@@ -7455,6 +7498,7 @@ export namespace Prisma {
     picture?: true
     email?: true
     password?: true
+    age?: true
   }
 
   export type PlayersMaxAggregateInputType = {
@@ -7465,6 +7509,7 @@ export namespace Prisma {
     picture?: true
     email?: true
     password?: true
+    age?: true
   }
 
   export type PlayersCountAggregateInputType = {
@@ -7475,6 +7520,7 @@ export namespace Prisma {
     picture?: true
     email?: true
     password?: true
+    age?: true
     _all?: true
   }
 
@@ -7572,6 +7618,7 @@ export namespace Prisma {
     picture: string | null
     email: string | null
     password: string | null
+    age: bigint | null
     _count: PlayersCountAggregateOutputType | null
     _avg: PlayersAvgAggregateOutputType | null
     _sum: PlayersSumAggregateOutputType | null
@@ -7601,6 +7648,7 @@ export namespace Prisma {
     picture?: boolean
     email?: boolean
     password?: boolean
+    age?: boolean
     Club?: boolean | Players$ClubArgs<ExtArgs>
     Sessions?: boolean | Players$SessionsArgs<ExtArgs>
     _count?: boolean | PlayersCountOutputTypeDefaultArgs<ExtArgs>
@@ -7614,6 +7662,7 @@ export namespace Prisma {
     picture?: boolean
     email?: boolean
     password?: boolean
+    age?: boolean
     Club?: boolean | Players$ClubArgs<ExtArgs>
   }, ExtArgs["result"]["players"]>
 
@@ -7625,6 +7674,7 @@ export namespace Prisma {
     picture?: boolean
     email?: boolean
     password?: boolean
+    age?: boolean
     Club?: boolean | Players$ClubArgs<ExtArgs>
   }, ExtArgs["result"]["players"]>
 
@@ -7636,9 +7686,10 @@ export namespace Prisma {
     picture?: boolean
     email?: boolean
     password?: boolean
+    age?: boolean
   }
 
-  export type PlayersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "name" | "club_id" | "picture" | "email" | "password", ExtArgs["result"]["players"]>
+  export type PlayersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "name" | "club_id" | "picture" | "email" | "password" | "age", ExtArgs["result"]["players"]>
   export type PlayersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Club?: boolean | Players$ClubArgs<ExtArgs>
     Sessions?: boolean | Players$SessionsArgs<ExtArgs>
@@ -7665,6 +7716,7 @@ export namespace Prisma {
       picture: string | null
       email: string | null
       password: string | null
+      age: bigint | null
     }, ExtArgs["result"]["players"]>
     composites: {}
   }
@@ -8097,6 +8149,7 @@ export namespace Prisma {
     readonly picture: FieldRef<"Players", 'String'>
     readonly email: FieldRef<"Players", 'String'>
     readonly password: FieldRef<"Players", 'String'>
+    readonly age: FieldRef<"Players", 'BigInt'>
   }
     
 
@@ -8592,6 +8645,9 @@ export namespace Prisma {
     coach_id: bigint | null
     court_id: bigint | null
     club_id: bigint | null
+    peak_hours: boolean | null
+    date: Date | null
+    player_email: string | null
   }
 
   export type SessionsMaxAggregateOutputType = {
@@ -8602,6 +8658,9 @@ export namespace Prisma {
     coach_id: bigint | null
     court_id: bigint | null
     club_id: bigint | null
+    peak_hours: boolean | null
+    date: Date | null
+    player_email: string | null
   }
 
   export type SessionsCountAggregateOutputType = {
@@ -8612,6 +8671,10 @@ export namespace Prisma {
     coach_id: number
     court_id: number
     club_id: number
+    time: number
+    peak_hours: number
+    date: number
+    player_email: number
     _all: number
   }
 
@@ -8642,6 +8705,9 @@ export namespace Prisma {
     coach_id?: true
     court_id?: true
     club_id?: true
+    peak_hours?: true
+    date?: true
+    player_email?: true
   }
 
   export type SessionsMaxAggregateInputType = {
@@ -8652,6 +8718,9 @@ export namespace Prisma {
     coach_id?: true
     court_id?: true
     club_id?: true
+    peak_hours?: true
+    date?: true
+    player_email?: true
   }
 
   export type SessionsCountAggregateInputType = {
@@ -8662,6 +8731,10 @@ export namespace Prisma {
     coach_id?: true
     court_id?: true
     club_id?: true
+    time?: true
+    peak_hours?: true
+    date?: true
+    player_email?: true
     _all?: true
   }
 
@@ -8759,6 +8832,10 @@ export namespace Prisma {
     coach_id: bigint | null
     court_id: bigint | null
     club_id: bigint | null
+    time: string[]
+    peak_hours: boolean | null
+    date: Date
+    player_email: string | null
     _count: SessionsCountAggregateOutputType | null
     _avg: SessionsAvgAggregateOutputType | null
     _sum: SessionsSumAggregateOutputType | null
@@ -8788,6 +8865,10 @@ export namespace Prisma {
     coach_id?: boolean
     court_id?: boolean
     club_id?: boolean
+    time?: boolean
+    peak_hours?: boolean
+    date?: boolean
+    player_email?: boolean
     Club?: boolean | Sessions$ClubArgs<ExtArgs>
     Coaches?: boolean | Sessions$CoachesArgs<ExtArgs>
     Courts?: boolean | Sessions$CourtsArgs<ExtArgs>
@@ -8802,6 +8883,10 @@ export namespace Prisma {
     coach_id?: boolean
     court_id?: boolean
     club_id?: boolean
+    time?: boolean
+    peak_hours?: boolean
+    date?: boolean
+    player_email?: boolean
     Club?: boolean | Sessions$ClubArgs<ExtArgs>
     Coaches?: boolean | Sessions$CoachesArgs<ExtArgs>
     Courts?: boolean | Sessions$CourtsArgs<ExtArgs>
@@ -8816,6 +8901,10 @@ export namespace Prisma {
     coach_id?: boolean
     court_id?: boolean
     club_id?: boolean
+    time?: boolean
+    peak_hours?: boolean
+    date?: boolean
+    player_email?: boolean
     Club?: boolean | Sessions$ClubArgs<ExtArgs>
     Coaches?: boolean | Sessions$CoachesArgs<ExtArgs>
     Courts?: boolean | Sessions$CourtsArgs<ExtArgs>
@@ -8830,9 +8919,13 @@ export namespace Prisma {
     coach_id?: boolean
     court_id?: boolean
     club_id?: boolean
+    time?: boolean
+    peak_hours?: boolean
+    date?: boolean
+    player_email?: boolean
   }
 
-  export type SessionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "player_id" | "charges" | "coach_id" | "court_id" | "club_id", ExtArgs["result"]["sessions"]>
+  export type SessionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "created_at" | "player_id" | "charges" | "coach_id" | "court_id" | "club_id" | "time" | "peak_hours" | "date" | "player_email", ExtArgs["result"]["sessions"]>
   export type SessionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Club?: boolean | Sessions$ClubArgs<ExtArgs>
     Coaches?: boolean | Sessions$CoachesArgs<ExtArgs>
@@ -8868,6 +8961,10 @@ export namespace Prisma {
       coach_id: bigint | null
       court_id: bigint | null
       club_id: bigint | null
+      time: string[]
+      peak_hours: boolean | null
+      date: Date
+      player_email: string | null
     }, ExtArgs["result"]["sessions"]>
     composites: {}
   }
@@ -9302,6 +9399,10 @@ export namespace Prisma {
     readonly coach_id: FieldRef<"Sessions", 'BigInt'>
     readonly court_id: FieldRef<"Sessions", 'BigInt'>
     readonly club_id: FieldRef<"Sessions", 'BigInt'>
+    readonly time: FieldRef<"Sessions", 'String[]'>
+    readonly peak_hours: FieldRef<"Sessions", 'Boolean'>
+    readonly date: FieldRef<"Sessions", 'DateTime'>
+    readonly player_email: FieldRef<"Sessions", 'String'>
   }
     
 
@@ -9520,7 +9621,7 @@ export namespace Prisma {
     /**
      * The data needed to create a Sessions.
      */
-    data?: XOR<SessionsCreateInput, SessionsUncheckedCreateInput>
+    data: XOR<SessionsCreateInput, SessionsUncheckedCreateInput>
   }
 
   /**
@@ -10841,7 +10942,9 @@ export namespace Prisma {
     name: 'name',
     club_manager: 'club_manager',
     email: 'email',
-    password: 'password'
+    password: 'password',
+    peak_hours: 'peak_hours',
+    off_peak_hrs: 'off_peak_hrs'
   };
 
   export type ClubScalarFieldEnum = (typeof ClubScalarFieldEnum)[keyof typeof ClubScalarFieldEnum]
@@ -10866,7 +10969,9 @@ export namespace Prisma {
     created_at: 'created_at',
     name: 'name',
     charges: 'charges',
-    club_id: 'club_id'
+    club_id: 'club_id',
+    peak_hours: 'peak_hours',
+    off_peak_hours: 'off_peak_hours'
   };
 
   export type CourtsScalarFieldEnum = (typeof CourtsScalarFieldEnum)[keyof typeof CourtsScalarFieldEnum]
@@ -10901,7 +11006,8 @@ export namespace Prisma {
     club_id: 'club_id',
     picture: 'picture',
     email: 'email',
-    password: 'password'
+    password: 'password',
+    age: 'age'
   };
 
   export type PlayersScalarFieldEnum = (typeof PlayersScalarFieldEnum)[keyof typeof PlayersScalarFieldEnum]
@@ -10914,7 +11020,11 @@ export namespace Prisma {
     charges: 'charges',
     coach_id: 'coach_id',
     court_id: 'court_id',
-    club_id: 'club_id'
+    club_id: 'club_id',
+    time: 'time',
+    peak_hours: 'peak_hours',
+    date: 'date',
+    player_email: 'player_email'
   };
 
   export type SessionsScalarFieldEnum = (typeof SessionsScalarFieldEnum)[keyof typeof SessionsScalarFieldEnum]
@@ -11003,6 +11113,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -11043,6 +11160,8 @@ export namespace Prisma {
     club_manager?: StringNullableFilter<"Club"> | string | null
     email?: StringNullableFilter<"Club"> | string | null
     password?: StringNullableFilter<"Club"> | string | null
+    peak_hours?: StringNullableListFilter<"Club">
+    off_peak_hrs?: StringNullableListFilter<"Club">
     Coaches?: CoachesListRelationFilter
     Courts?: CourtsListRelationFilter
     Event?: EventListRelationFilter
@@ -11057,6 +11176,8 @@ export namespace Prisma {
     club_manager?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    peak_hours?: SortOrder
+    off_peak_hrs?: SortOrder
     Coaches?: CoachesOrderByRelationAggregateInput
     Courts?: CourtsOrderByRelationAggregateInput
     Event?: EventOrderByRelationAggregateInput
@@ -11074,6 +11195,8 @@ export namespace Prisma {
     name?: StringNullableFilter<"Club"> | string | null
     club_manager?: StringNullableFilter<"Club"> | string | null
     password?: StringNullableFilter<"Club"> | string | null
+    peak_hours?: StringNullableListFilter<"Club">
+    off_peak_hrs?: StringNullableListFilter<"Club">
     Coaches?: CoachesListRelationFilter
     Courts?: CourtsListRelationFilter
     Event?: EventListRelationFilter
@@ -11088,6 +11211,8 @@ export namespace Prisma {
     club_manager?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    peak_hours?: SortOrder
+    off_peak_hrs?: SortOrder
     _count?: ClubCountOrderByAggregateInput
     _avg?: ClubAvgOrderByAggregateInput
     _max?: ClubMaxOrderByAggregateInput
@@ -11105,6 +11230,8 @@ export namespace Prisma {
     club_manager?: StringNullableWithAggregatesFilter<"Club"> | string | null
     email?: StringNullableWithAggregatesFilter<"Club"> | string | null
     password?: StringNullableWithAggregatesFilter<"Club"> | string | null
+    peak_hours?: StringNullableListFilter<"Club">
+    off_peak_hrs?: StringNullableListFilter<"Club">
   }
 
   export type CoachesWhereInput = {
@@ -11191,6 +11318,8 @@ export namespace Prisma {
     name?: StringNullableFilter<"Courts"> | string | null
     charges?: BigIntNullableFilter<"Courts"> | bigint | number | null
     club_id?: BigIntNullableFilter<"Courts"> | bigint | number | null
+    peak_hours?: StringNullableListFilter<"Courts">
+    off_peak_hours?: StringNullableListFilter<"Courts">
     Club?: XOR<ClubNullableScalarRelationFilter, ClubWhereInput> | null
     Sessions?: SessionsListRelationFilter
   }
@@ -11201,6 +11330,8 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     charges?: SortOrderInput | SortOrder
     club_id?: SortOrderInput | SortOrder
+    peak_hours?: SortOrder
+    off_peak_hours?: SortOrder
     Club?: ClubOrderByWithRelationInput
     Sessions?: SessionsOrderByRelationAggregateInput
   }
@@ -11214,6 +11345,8 @@ export namespace Prisma {
     name?: StringNullableFilter<"Courts"> | string | null
     charges?: BigIntNullableFilter<"Courts"> | bigint | number | null
     club_id?: BigIntNullableFilter<"Courts"> | bigint | number | null
+    peak_hours?: StringNullableListFilter<"Courts">
+    off_peak_hours?: StringNullableListFilter<"Courts">
     Club?: XOR<ClubNullableScalarRelationFilter, ClubWhereInput> | null
     Sessions?: SessionsListRelationFilter
   }, "id">
@@ -11224,6 +11357,8 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     charges?: SortOrderInput | SortOrder
     club_id?: SortOrderInput | SortOrder
+    peak_hours?: SortOrder
+    off_peak_hours?: SortOrder
     _count?: CourtsCountOrderByAggregateInput
     _avg?: CourtsAvgOrderByAggregateInput
     _max?: CourtsMaxOrderByAggregateInput
@@ -11240,6 +11375,8 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"Courts"> | string | null
     charges?: BigIntNullableWithAggregatesFilter<"Courts"> | bigint | number | null
     club_id?: BigIntNullableWithAggregatesFilter<"Courts"> | bigint | number | null
+    peak_hours?: StringNullableListFilter<"Courts">
+    off_peak_hours?: StringNullableListFilter<"Courts">
   }
 
   export type EventWhereInput = {
@@ -11364,6 +11501,7 @@ export namespace Prisma {
     picture?: StringNullableFilter<"Players"> | string | null
     email?: StringNullableFilter<"Players"> | string | null
     password?: StringNullableFilter<"Players"> | string | null
+    age?: BigIntNullableFilter<"Players"> | bigint | number | null
     Club?: XOR<ClubNullableScalarRelationFilter, ClubWhereInput> | null
     Sessions?: SessionsListRelationFilter
   }
@@ -11376,6 +11514,7 @@ export namespace Prisma {
     picture?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    age?: SortOrderInput | SortOrder
     Club?: ClubOrderByWithRelationInput
     Sessions?: SessionsOrderByRelationAggregateInput
   }
@@ -11391,6 +11530,7 @@ export namespace Prisma {
     club_id?: BigIntNullableFilter<"Players"> | bigint | number | null
     picture?: StringNullableFilter<"Players"> | string | null
     password?: StringNullableFilter<"Players"> | string | null
+    age?: BigIntNullableFilter<"Players"> | bigint | number | null
     Club?: XOR<ClubNullableScalarRelationFilter, ClubWhereInput> | null
     Sessions?: SessionsListRelationFilter
   }, "id" | "email">
@@ -11403,6 +11543,7 @@ export namespace Prisma {
     picture?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    age?: SortOrderInput | SortOrder
     _count?: PlayersCountOrderByAggregateInput
     _avg?: PlayersAvgOrderByAggregateInput
     _max?: PlayersMaxOrderByAggregateInput
@@ -11421,6 +11562,7 @@ export namespace Prisma {
     picture?: StringNullableWithAggregatesFilter<"Players"> | string | null
     email?: StringNullableWithAggregatesFilter<"Players"> | string | null
     password?: StringNullableWithAggregatesFilter<"Players"> | string | null
+    age?: BigIntNullableWithAggregatesFilter<"Players"> | bigint | number | null
   }
 
   export type SessionsWhereInput = {
@@ -11434,6 +11576,10 @@ export namespace Prisma {
     coach_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
     court_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
     club_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
+    time?: StringNullableListFilter<"Sessions">
+    peak_hours?: BoolNullableFilter<"Sessions"> | boolean | null
+    date?: DateTimeFilter<"Sessions"> | Date | string
+    player_email?: StringNullableFilter<"Sessions"> | string | null
     Club?: XOR<ClubNullableScalarRelationFilter, ClubWhereInput> | null
     Coaches?: XOR<CoachesNullableScalarRelationFilter, CoachesWhereInput> | null
     Courts?: XOR<CourtsNullableScalarRelationFilter, CourtsWhereInput> | null
@@ -11448,6 +11594,10 @@ export namespace Prisma {
     coach_id?: SortOrderInput | SortOrder
     court_id?: SortOrderInput | SortOrder
     club_id?: SortOrderInput | SortOrder
+    time?: SortOrder
+    peak_hours?: SortOrderInput | SortOrder
+    date?: SortOrder
+    player_email?: SortOrderInput | SortOrder
     Club?: ClubOrderByWithRelationInput
     Coaches?: CoachesOrderByWithRelationInput
     Courts?: CourtsOrderByWithRelationInput
@@ -11465,6 +11615,10 @@ export namespace Prisma {
     coach_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
     court_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
     club_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
+    time?: StringNullableListFilter<"Sessions">
+    peak_hours?: BoolNullableFilter<"Sessions"> | boolean | null
+    date?: DateTimeFilter<"Sessions"> | Date | string
+    player_email?: StringNullableFilter<"Sessions"> | string | null
     Club?: XOR<ClubNullableScalarRelationFilter, ClubWhereInput> | null
     Coaches?: XOR<CoachesNullableScalarRelationFilter, CoachesWhereInput> | null
     Courts?: XOR<CourtsNullableScalarRelationFilter, CourtsWhereInput> | null
@@ -11479,6 +11633,10 @@ export namespace Prisma {
     coach_id?: SortOrderInput | SortOrder
     court_id?: SortOrderInput | SortOrder
     club_id?: SortOrderInput | SortOrder
+    time?: SortOrder
+    peak_hours?: SortOrderInput | SortOrder
+    date?: SortOrder
+    player_email?: SortOrderInput | SortOrder
     _count?: SessionsCountOrderByAggregateInput
     _avg?: SessionsAvgOrderByAggregateInput
     _max?: SessionsMaxOrderByAggregateInput
@@ -11497,6 +11655,10 @@ export namespace Prisma {
     coach_id?: BigIntNullableWithAggregatesFilter<"Sessions"> | bigint | number | null
     court_id?: BigIntNullableWithAggregatesFilter<"Sessions"> | bigint | number | null
     club_id?: BigIntNullableWithAggregatesFilter<"Sessions"> | bigint | number | null
+    time?: StringNullableListFilter<"Sessions">
+    peak_hours?: BoolNullableWithAggregatesFilter<"Sessions"> | boolean | null
+    date?: DateTimeWithAggregatesFilter<"Sessions"> | Date | string
+    player_email?: StringNullableWithAggregatesFilter<"Sessions"> | string | null
   }
 
   export type passwordResetTokenWhereInput = {
@@ -11560,6 +11722,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesCreateNestedManyWithoutClubInput
     Courts?: CourtsCreateNestedManyWithoutClubInput
     Event?: EventCreateNestedManyWithoutClubInput
@@ -11574,6 +11738,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedCreateNestedManyWithoutClubInput
     Courts?: CourtsUncheckedCreateNestedManyWithoutClubInput
     Event?: EventUncheckedCreateNestedManyWithoutClubInput
@@ -11588,6 +11754,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUpdateManyWithoutClubNestedInput
     Courts?: CourtsUpdateManyWithoutClubNestedInput
     Event?: EventUpdateManyWithoutClubNestedInput
@@ -11602,6 +11770,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedUpdateManyWithoutClubNestedInput
     Courts?: CourtsUncheckedUpdateManyWithoutClubNestedInput
     Event?: EventUncheckedUpdateManyWithoutClubNestedInput
@@ -11616,6 +11786,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
   }
 
   export type ClubUpdateManyMutationInput = {
@@ -11625,6 +11797,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
   }
 
   export type ClubUncheckedUpdateManyInput = {
@@ -11634,6 +11808,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
   }
 
   export type CoachesCreateInput = {
@@ -11721,6 +11897,8 @@ export namespace Prisma {
     created_at?: Date | string
     name?: string | null
     charges?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
     Club?: ClubCreateNestedOneWithoutCourtsInput
     Sessions?: SessionsCreateNestedManyWithoutCourtsInput
   }
@@ -11731,6 +11909,8 @@ export namespace Prisma {
     name?: string | null
     charges?: bigint | number | null
     club_id?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
     Sessions?: SessionsUncheckedCreateNestedManyWithoutCourtsInput
   }
 
@@ -11739,6 +11919,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
     Club?: ClubUpdateOneWithoutCourtsNestedInput
     Sessions?: SessionsUpdateManyWithoutCourtsNestedInput
   }
@@ -11749,6 +11931,8 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
     Sessions?: SessionsUncheckedUpdateManyWithoutCourtsNestedInput
   }
 
@@ -11758,6 +11942,8 @@ export namespace Prisma {
     name?: string | null
     charges?: bigint | number | null
     club_id?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
   }
 
   export type CourtsUpdateManyMutationInput = {
@@ -11765,6 +11951,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
   }
 
   export type CourtsUncheckedUpdateManyInput = {
@@ -11773,6 +11961,8 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
   }
 
   export type EventCreateInput = {
@@ -11893,6 +12083,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
     Club?: ClubCreateNestedOneWithoutPlayersInput
     Sessions?: SessionsCreateNestedManyWithoutPlayersInput
   }
@@ -11905,6 +12096,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
     Sessions?: SessionsUncheckedCreateNestedManyWithoutPlayersInput
   }
 
@@ -11915,6 +12107,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     Club?: ClubUpdateOneWithoutPlayersNestedInput
     Sessions?: SessionsUpdateManyWithoutPlayersNestedInput
   }
@@ -11927,6 +12120,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     Sessions?: SessionsUncheckedUpdateManyWithoutPlayersNestedInput
   }
 
@@ -11938,6 +12132,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
   }
 
   export type PlayersUpdateManyMutationInput = {
@@ -11947,6 +12142,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type PlayersUncheckedUpdateManyInput = {
@@ -11957,12 +12153,17 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type SessionsCreateInput = {
     id?: bigint | number
     created_at?: Date | string
     charges?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
     Club?: ClubCreateNestedOneWithoutSessionsInput
     Coaches?: CoachesCreateNestedOneWithoutSessionsInput
     Courts?: CourtsCreateNestedOneWithoutSessionsInput
@@ -11977,12 +12178,20 @@ export namespace Prisma {
     coach_id?: bigint | number | null
     court_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
     Club?: ClubUpdateOneWithoutSessionsNestedInput
     Coaches?: CoachesUpdateOneWithoutSessionsNestedInput
     Courts?: CourtsUpdateOneWithoutSessionsNestedInput
@@ -11997,6 +12206,10 @@ export namespace Prisma {
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsCreateManyInput = {
@@ -12007,12 +12220,20 @@ export namespace Prisma {
     coach_id?: bigint | number | null
     court_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsUncheckedUpdateManyInput = {
@@ -12023,6 +12244,10 @@ export namespace Prisma {
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type passwordResetTokenCreateInput = {
@@ -12115,6 +12340,14 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type CoachesListRelationFilter = {
     every?: CoachesWhereInput
     some?: CoachesWhereInput
@@ -12177,6 +12410,8 @@ export namespace Prisma {
     club_manager?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    peak_hours?: SortOrder
+    off_peak_hrs?: SortOrder
   }
 
   export type ClubAvgOrderByAggregateInput = {
@@ -12336,6 +12571,8 @@ export namespace Prisma {
     name?: SortOrder
     charges?: SortOrder
     club_id?: SortOrder
+    peak_hours?: SortOrder
+    off_peak_hours?: SortOrder
   }
 
   export type CourtsAvgOrderByAggregateInput = {
@@ -12444,11 +12681,13 @@ export namespace Prisma {
     picture?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    age?: SortOrder
   }
 
   export type PlayersAvgOrderByAggregateInput = {
     id?: SortOrder
     club_id?: SortOrder
+    age?: SortOrder
   }
 
   export type PlayersMaxOrderByAggregateInput = {
@@ -12459,6 +12698,7 @@ export namespace Prisma {
     picture?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    age?: SortOrder
   }
 
   export type PlayersMinOrderByAggregateInput = {
@@ -12469,11 +12709,18 @@ export namespace Prisma {
     picture?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    age?: SortOrder
   }
 
   export type PlayersSumOrderByAggregateInput = {
     id?: SortOrder
     club_id?: SortOrder
+    age?: SortOrder
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type CoachesNullableScalarRelationFilter = {
@@ -12499,6 +12746,10 @@ export namespace Prisma {
     coach_id?: SortOrder
     court_id?: SortOrder
     club_id?: SortOrder
+    time?: SortOrder
+    peak_hours?: SortOrder
+    date?: SortOrder
+    player_email?: SortOrder
   }
 
   export type SessionsAvgOrderByAggregateInput = {
@@ -12518,6 +12769,9 @@ export namespace Prisma {
     coach_id?: SortOrder
     court_id?: SortOrder
     club_id?: SortOrder
+    peak_hours?: SortOrder
+    date?: SortOrder
+    player_email?: SortOrder
   }
 
   export type SessionsMinOrderByAggregateInput = {
@@ -12528,6 +12782,9 @@ export namespace Prisma {
     coach_id?: SortOrder
     court_id?: SortOrder
     club_id?: SortOrder
+    peak_hours?: SortOrder
+    date?: SortOrder
+    player_email?: SortOrder
   }
 
   export type SessionsSumOrderByAggregateInput = {
@@ -12537,6 +12794,14 @@ export namespace Prisma {
     coach_id?: SortOrder
     court_id?: SortOrder
     club_id?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -12631,6 +12896,14 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type ClubCreatepeak_hoursInput = {
+    set: string[]
+  }
+
+  export type ClubCreateoff_peak_hrsInput = {
+    set: string[]
+  }
+
   export type CoachesCreateNestedManyWithoutClubInput = {
     create?: XOR<CoachesCreateWithoutClubInput, CoachesUncheckedCreateWithoutClubInput> | CoachesCreateWithoutClubInput[] | CoachesUncheckedCreateWithoutClubInput[]
     connectOrCreate?: CoachesCreateOrConnectWithoutClubInput | CoachesCreateOrConnectWithoutClubInput[]
@@ -12715,6 +12988,16 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type ClubUpdatepeak_hoursInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type ClubUpdateoff_peak_hrsInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type CoachesUpdateManyWithoutClubNestedInput = {
@@ -12923,6 +13206,14 @@ export namespace Prisma {
     deleteMany?: SessionsScalarWhereInput | SessionsScalarWhereInput[]
   }
 
+  export type CourtsCreatepeak_hoursInput = {
+    set: string[]
+  }
+
+  export type CourtsCreateoff_peak_hoursInput = {
+    set: string[]
+  }
+
   export type ClubCreateNestedOneWithoutCourtsInput = {
     create?: XOR<ClubCreateWithoutCourtsInput, ClubUncheckedCreateWithoutCourtsInput>
     connectOrCreate?: ClubCreateOrConnectWithoutCourtsInput
@@ -12941,6 +13232,16 @@ export namespace Prisma {
     connectOrCreate?: SessionsCreateOrConnectWithoutCourtsInput | SessionsCreateOrConnectWithoutCourtsInput[]
     createMany?: SessionsCreateManyCourtsInputEnvelope
     connect?: SessionsWhereUniqueInput | SessionsWhereUniqueInput[]
+  }
+
+  export type CourtsUpdatepeak_hoursInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type CourtsUpdateoff_peak_hoursInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type ClubUpdateOneWithoutCourtsNestedInput = {
@@ -13055,6 +13356,10 @@ export namespace Prisma {
     deleteMany?: SessionsScalarWhereInput | SessionsScalarWhereInput[]
   }
 
+  export type SessionsCreatetimeInput = {
+    set: string[]
+  }
+
   export type ClubCreateNestedOneWithoutSessionsInput = {
     create?: XOR<ClubCreateWithoutSessionsInput, ClubUncheckedCreateWithoutSessionsInput>
     connectOrCreate?: ClubCreateOrConnectWithoutSessionsInput
@@ -13077,6 +13382,15 @@ export namespace Prisma {
     create?: XOR<PlayersCreateWithoutSessionsInput, PlayersUncheckedCreateWithoutSessionsInput>
     connectOrCreate?: PlayersCreateOrConnectWithoutSessionsInput
     connect?: PlayersWhereUniqueInput
+  }
+
+  export type SessionsUpdatetimeInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type ClubUpdateOneWithoutSessionsNestedInput = {
@@ -13285,6 +13599,19 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -13369,6 +13696,8 @@ export namespace Prisma {
     created_at?: Date | string
     name?: string | null
     charges?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
     Sessions?: SessionsCreateNestedManyWithoutCourtsInput
   }
 
@@ -13377,6 +13706,8 @@ export namespace Prisma {
     created_at?: Date | string
     name?: string | null
     charges?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
     Sessions?: SessionsUncheckedCreateNestedManyWithoutCourtsInput
   }
 
@@ -13425,6 +13756,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
     Sessions?: SessionsCreateNestedManyWithoutPlayersInput
   }
 
@@ -13435,6 +13767,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
     Sessions?: SessionsUncheckedCreateNestedManyWithoutPlayersInput
   }
 
@@ -13452,6 +13785,10 @@ export namespace Prisma {
     id?: bigint | number
     created_at?: Date | string
     charges?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
     Coaches?: CoachesCreateNestedOneWithoutSessionsInput
     Courts?: CourtsCreateNestedOneWithoutSessionsInput
     Players?: PlayersCreateNestedOneWithoutSessionsInput
@@ -13464,6 +13801,10 @@ export namespace Prisma {
     charges?: bigint | number | null
     coach_id?: bigint | number | null
     court_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsCreateOrConnectWithoutClubInput = {
@@ -13531,6 +13872,8 @@ export namespace Prisma {
     name?: StringNullableFilter<"Courts"> | string | null
     charges?: BigIntNullableFilter<"Courts"> | bigint | number | null
     club_id?: BigIntNullableFilter<"Courts"> | bigint | number | null
+    peak_hours?: StringNullableListFilter<"Courts">
+    off_peak_hours?: StringNullableListFilter<"Courts">
   }
 
   export type EventUpsertWithWhereUniqueWithoutClubInput = {
@@ -13589,6 +13932,7 @@ export namespace Prisma {
     picture?: StringNullableFilter<"Players"> | string | null
     email?: StringNullableFilter<"Players"> | string | null
     password?: StringNullableFilter<"Players"> | string | null
+    age?: BigIntNullableFilter<"Players"> | bigint | number | null
   }
 
   export type SessionsUpsertWithWhereUniqueWithoutClubInput = {
@@ -13618,6 +13962,10 @@ export namespace Prisma {
     coach_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
     court_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
     club_id?: BigIntNullableFilter<"Sessions"> | bigint | number | null
+    time?: StringNullableListFilter<"Sessions">
+    peak_hours?: BoolNullableFilter<"Sessions"> | boolean | null
+    date?: DateTimeFilter<"Sessions"> | Date | string
+    player_email?: StringNullableFilter<"Sessions"> | string | null
   }
 
   export type ClubCreateWithoutCoachesInput = {
@@ -13627,6 +13975,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Courts?: CourtsCreateNestedManyWithoutClubInput
     Event?: EventCreateNestedManyWithoutClubInput
     Players?: PlayersCreateNestedManyWithoutClubInput
@@ -13640,6 +13990,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Courts?: CourtsUncheckedCreateNestedManyWithoutClubInput
     Event?: EventUncheckedCreateNestedManyWithoutClubInput
     Players?: PlayersUncheckedCreateNestedManyWithoutClubInput
@@ -13655,6 +14007,10 @@ export namespace Prisma {
     id?: bigint | number
     created_at?: Date | string
     charges?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
     Club?: ClubCreateNestedOneWithoutSessionsInput
     Courts?: CourtsCreateNestedOneWithoutSessionsInput
     Players?: PlayersCreateNestedOneWithoutSessionsInput
@@ -13667,6 +14023,10 @@ export namespace Prisma {
     charges?: bigint | number | null
     court_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsCreateOrConnectWithoutCoachesInput = {
@@ -13697,6 +14057,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Courts?: CourtsUpdateManyWithoutClubNestedInput
     Event?: EventUpdateManyWithoutClubNestedInput
     Players?: PlayersUpdateManyWithoutClubNestedInput
@@ -13710,6 +14072,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Courts?: CourtsUncheckedUpdateManyWithoutClubNestedInput
     Event?: EventUncheckedUpdateManyWithoutClubNestedInput
     Players?: PlayersUncheckedUpdateManyWithoutClubNestedInput
@@ -13739,6 +14103,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesCreateNestedManyWithoutClubInput
     Event?: EventCreateNestedManyWithoutClubInput
     Players?: PlayersCreateNestedManyWithoutClubInput
@@ -13752,6 +14118,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedCreateNestedManyWithoutClubInput
     Event?: EventUncheckedCreateNestedManyWithoutClubInput
     Players?: PlayersUncheckedCreateNestedManyWithoutClubInput
@@ -13767,6 +14135,10 @@ export namespace Prisma {
     id?: bigint | number
     created_at?: Date | string
     charges?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
     Club?: ClubCreateNestedOneWithoutSessionsInput
     Coaches?: CoachesCreateNestedOneWithoutSessionsInput
     Players?: PlayersCreateNestedOneWithoutSessionsInput
@@ -13779,6 +14151,10 @@ export namespace Prisma {
     charges?: bigint | number | null
     coach_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsCreateOrConnectWithoutCourtsInput = {
@@ -13809,6 +14185,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUpdateManyWithoutClubNestedInput
     Event?: EventUpdateManyWithoutClubNestedInput
     Players?: PlayersUpdateManyWithoutClubNestedInput
@@ -13822,6 +14200,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedUpdateManyWithoutClubNestedInput
     Event?: EventUncheckedUpdateManyWithoutClubNestedInput
     Players?: PlayersUncheckedUpdateManyWithoutClubNestedInput
@@ -13851,6 +14231,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesCreateNestedManyWithoutClubInput
     Courts?: CourtsCreateNestedManyWithoutClubInput
     Players?: PlayersCreateNestedManyWithoutClubInput
@@ -13864,6 +14246,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedCreateNestedManyWithoutClubInput
     Courts?: CourtsUncheckedCreateNestedManyWithoutClubInput
     Players?: PlayersUncheckedCreateNestedManyWithoutClubInput
@@ -13893,6 +14277,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUpdateManyWithoutClubNestedInput
     Courts?: CourtsUpdateManyWithoutClubNestedInput
     Players?: PlayersUpdateManyWithoutClubNestedInput
@@ -13906,6 +14292,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedUpdateManyWithoutClubNestedInput
     Courts?: CourtsUncheckedUpdateManyWithoutClubNestedInput
     Players?: PlayersUncheckedUpdateManyWithoutClubNestedInput
@@ -13919,6 +14307,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesCreateNestedManyWithoutClubInput
     Courts?: CourtsCreateNestedManyWithoutClubInput
     Event?: EventCreateNestedManyWithoutClubInput
@@ -13932,6 +14322,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedCreateNestedManyWithoutClubInput
     Courts?: CourtsUncheckedCreateNestedManyWithoutClubInput
     Event?: EventUncheckedCreateNestedManyWithoutClubInput
@@ -13947,6 +14339,10 @@ export namespace Prisma {
     id?: bigint | number
     created_at?: Date | string
     charges?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
     Club?: ClubCreateNestedOneWithoutSessionsInput
     Coaches?: CoachesCreateNestedOneWithoutSessionsInput
     Courts?: CourtsCreateNestedOneWithoutSessionsInput
@@ -13959,6 +14355,10 @@ export namespace Prisma {
     coach_id?: bigint | number | null
     court_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsCreateOrConnectWithoutPlayersInput = {
@@ -13989,6 +14389,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUpdateManyWithoutClubNestedInput
     Courts?: CourtsUpdateManyWithoutClubNestedInput
     Event?: EventUpdateManyWithoutClubNestedInput
@@ -14002,6 +14404,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedUpdateManyWithoutClubNestedInput
     Courts?: CourtsUncheckedUpdateManyWithoutClubNestedInput
     Event?: EventUncheckedUpdateManyWithoutClubNestedInput
@@ -14031,6 +14435,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesCreateNestedManyWithoutClubInput
     Courts?: CourtsCreateNestedManyWithoutClubInput
     Event?: EventCreateNestedManyWithoutClubInput
@@ -14044,6 +14450,8 @@ export namespace Prisma {
     club_manager?: string | null
     email?: string | null
     password?: string | null
+    peak_hours?: ClubCreatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubCreateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedCreateNestedManyWithoutClubInput
     Courts?: CourtsUncheckedCreateNestedManyWithoutClubInput
     Event?: EventUncheckedCreateNestedManyWithoutClubInput
@@ -14087,6 +14495,8 @@ export namespace Prisma {
     created_at?: Date | string
     name?: string | null
     charges?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
     Club?: ClubCreateNestedOneWithoutCourtsInput
   }
 
@@ -14096,6 +14506,8 @@ export namespace Prisma {
     name?: string | null
     charges?: bigint | number | null
     club_id?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
   }
 
   export type CourtsCreateOrConnectWithoutSessionsInput = {
@@ -14110,6 +14522,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
     Club?: ClubCreateNestedOneWithoutPlayersInput
   }
 
@@ -14121,6 +14534,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
   }
 
   export type PlayersCreateOrConnectWithoutSessionsInput = {
@@ -14146,6 +14560,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUpdateManyWithoutClubNestedInput
     Courts?: CourtsUpdateManyWithoutClubNestedInput
     Event?: EventUpdateManyWithoutClubNestedInput
@@ -14159,6 +14575,8 @@ export namespace Prisma {
     club_manager?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    peak_hours?: ClubUpdatepeak_hoursInput | string[]
+    off_peak_hrs?: ClubUpdateoff_peak_hrsInput | string[]
     Coaches?: CoachesUncheckedUpdateManyWithoutClubNestedInput
     Courts?: CourtsUncheckedUpdateManyWithoutClubNestedInput
     Event?: EventUncheckedUpdateManyWithoutClubNestedInput
@@ -14214,6 +14632,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
     Club?: ClubUpdateOneWithoutCourtsNestedInput
   }
 
@@ -14223,6 +14643,8 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
   }
 
   export type PlayersUpsertWithoutSessionsInput = {
@@ -14243,6 +14665,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     Club?: ClubUpdateOneWithoutPlayersNestedInput
   }
 
@@ -14254,6 +14677,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type CoachesCreateManyClubInput = {
@@ -14271,6 +14695,8 @@ export namespace Prisma {
     created_at?: Date | string
     name?: string | null
     charges?: bigint | number | null
+    peak_hours?: CourtsCreatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsCreateoff_peak_hoursInput | string[]
   }
 
   export type EventCreateManyClubInput = {
@@ -14289,6 +14715,7 @@ export namespace Prisma {
     picture?: string | null
     email?: string | null
     password?: string | null
+    age?: bigint | number | null
   }
 
   export type SessionsCreateManyClubInput = {
@@ -14298,6 +14725,10 @@ export namespace Prisma {
     charges?: bigint | number | null
     coach_id?: bigint | number | null
     court_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type CoachesUpdateWithoutClubInput = {
@@ -14337,6 +14768,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
     Sessions?: SessionsUpdateManyWithoutCourtsNestedInput
   }
 
@@ -14345,6 +14778,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
     Sessions?: SessionsUncheckedUpdateManyWithoutCourtsNestedInput
   }
 
@@ -14353,6 +14788,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    peak_hours?: CourtsUpdatepeak_hoursInput | string[]
+    off_peak_hours?: CourtsUpdateoff_peak_hoursInput | string[]
   }
 
   export type EventUpdateWithoutClubInput = {
@@ -14389,6 +14826,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     Sessions?: SessionsUpdateManyWithoutPlayersNestedInput
   }
 
@@ -14399,6 +14837,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     Sessions?: SessionsUncheckedUpdateManyWithoutPlayersNestedInput
   }
 
@@ -14409,12 +14848,17 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   }
 
   export type SessionsUpdateWithoutClubInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
     Coaches?: CoachesUpdateOneWithoutSessionsNestedInput
     Courts?: CourtsUpdateOneWithoutSessionsNestedInput
     Players?: PlayersUpdateOneWithoutSessionsNestedInput
@@ -14427,6 +14871,10 @@ export namespace Prisma {
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsUncheckedUpdateManyWithoutClubInput = {
@@ -14436,6 +14884,10 @@ export namespace Prisma {
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsCreateManyCoachesInput = {
@@ -14445,12 +14897,20 @@ export namespace Prisma {
     charges?: bigint | number | null
     court_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsUpdateWithoutCoachesInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
     Club?: ClubUpdateOneWithoutSessionsNestedInput
     Courts?: CourtsUpdateOneWithoutSessionsNestedInput
     Players?: PlayersUpdateOneWithoutSessionsNestedInput
@@ -14463,6 +14923,10 @@ export namespace Prisma {
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsUncheckedUpdateManyWithoutCoachesInput = {
@@ -14472,6 +14936,10 @@ export namespace Prisma {
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsCreateManyCourtsInput = {
@@ -14481,12 +14949,20 @@ export namespace Prisma {
     charges?: bigint | number | null
     coach_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsUpdateWithoutCourtsInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
     Club?: ClubUpdateOneWithoutSessionsNestedInput
     Coaches?: CoachesUpdateOneWithoutSessionsNestedInput
     Players?: PlayersUpdateOneWithoutSessionsNestedInput
@@ -14499,6 +14975,10 @@ export namespace Prisma {
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsUncheckedUpdateManyWithoutCourtsInput = {
@@ -14508,6 +14988,10 @@ export namespace Prisma {
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsCreateManyPlayersInput = {
@@ -14517,12 +15001,20 @@ export namespace Prisma {
     coach_id?: bigint | number | null
     court_id?: bigint | number | null
     club_id?: bigint | number | null
+    time?: SessionsCreatetimeInput | string[]
+    peak_hours?: boolean | null
+    date: Date | string
+    player_email?: string | null
   }
 
   export type SessionsUpdateWithoutPlayersInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     charges?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
     Club?: ClubUpdateOneWithoutSessionsNestedInput
     Coaches?: CoachesUpdateOneWithoutSessionsNestedInput
     Courts?: CourtsUpdateOneWithoutSessionsNestedInput
@@ -14535,6 +15027,10 @@ export namespace Prisma {
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionsUncheckedUpdateManyWithoutPlayersInput = {
@@ -14544,6 +15040,10 @@ export namespace Prisma {
     coach_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     court_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     club_id?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    time?: SessionsUpdatetimeInput | string[]
+    peak_hours?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    player_email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

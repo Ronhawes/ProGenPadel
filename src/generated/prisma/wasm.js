@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.2
- * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+ * Prisma Client JS version: 6.11.0
+ * Query Engine version: 9c30299f5a0ea26a96790e13f796dc6094db3173
  */
 Prisma.prismaVersion = {
-  client: "6.8.2",
-  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
+  client: "6.11.0",
+  engine: "9c30299f5a0ea26a96790e13f796dc6094db3173"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -126,7 +126,9 @@ exports.Prisma.ClubScalarFieldEnum = {
   name: 'name',
   club_manager: 'club_manager',
   email: 'email',
-  password: 'password'
+  password: 'password',
+  peak_hours: 'peak_hours',
+  off_peak_hrs: 'off_peak_hrs'
 };
 
 exports.Prisma.CoachesScalarFieldEnum = {
@@ -145,7 +147,9 @@ exports.Prisma.CourtsScalarFieldEnum = {
   created_at: 'created_at',
   name: 'name',
   charges: 'charges',
-  club_id: 'club_id'
+  club_id: 'club_id',
+  peak_hours: 'peak_hours',
+  off_peak_hours: 'off_peak_hours'
 };
 
 exports.Prisma.EventScalarFieldEnum = {
@@ -171,7 +175,8 @@ exports.Prisma.PlayersScalarFieldEnum = {
   club_id: 'club_id',
   picture: 'picture',
   email: 'email',
-  password: 'password'
+  password: 'password',
+  age: 'age'
 };
 
 exports.Prisma.SessionsScalarFieldEnum = {
@@ -181,7 +186,11 @@ exports.Prisma.SessionsScalarFieldEnum = {
   charges: 'charges',
   coach_id: 'coach_id',
   court_id: 'court_id',
-  club_id: 'club_id'
+  club_id: 'club_id',
+  time: 'time',
+  peak_hours: 'peak_hours',
+  date: 'date',
+  player_email: 'player_email'
 };
 
 exports.Prisma.PasswordResetTokenScalarFieldEnum = {

@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -15,6 +15,8 @@ model Club {
   club_manager String?
   email        String?    @unique @db.VarChar
   password     String?    @db.VarChar
+  peak_hours   String[]
+  off_peak_hrs String[]
   Coaches      Coaches[]
   Courts       Courts[]
   Event        Event[]
@@ -78,19 +80,21 @@ model Players {
 }
 
 model Sessions {
-  id         BigInt   @id @default(autoincrement())
-  created_at DateTime @default(now()) @db.Timestamptz(6)
-  player_id  BigInt?
-  charges    BigInt?
-  coach_id   BigInt?
-  court_id   BigInt?
-  club_id    BigInt?
-  time       String[]
-  peak_hours Boolean?
-  Club       Club?    @relation(fields: [club_id], references: [id])
-  Coaches    Coaches? @relation(fields: [coach_id], references: [id])
-  Courts     Courts?  @relation(fields: [court_id], references: [id])
-  Players    Players? @relation(fields: [player_id], references: [id])
+  id           BigInt   @id @default(autoincrement())
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+  player_id    BigInt?
+  charges      BigInt?
+  coach_id     BigInt?
+  court_id     BigInt?
+  club_id      BigInt?
+  time         String[]
+  peak_hours   Boolean?
+  date         DateTime
+  player_email String?  @db.VarChar
+  Club         Club?    @relation(fields: [club_id], references: [id])
+  Coaches      Coaches? @relation(fields: [coach_id], references: [id])
+  Courts       Courts?  @relation(fields: [court_id], references: [id])
+  Players      Players? @relation(fields: [player_id], references: [id])
 }
 
 model passwordResetToken {

@@ -33,3 +33,5 @@ yarn-error.log*
 
 package-lock.json
 /app/generated/prisma
+
+/src/generated/prisma
