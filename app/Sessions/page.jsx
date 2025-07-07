@@ -1,16 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Select from "react-select";
 import Image from "next/image";
 import DecayCard from "@/page.jsx/DecayCard/DecayCard";
 import { format } from "date-fns";
 import headshot from "../../public/headshot.png";
 
 const hours = Array.from({ length: 16 }, (_, i) => i + 7);
-const courts = ["Court 1", "Court 2", "Court 3"];
 
 const Session = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [clubsData, setClubsData] = useState([]);
+  const [courts, setCourts] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const [formData, setFormData] = useState({
     player_email: "",
     club_id: "",
@@ -21,15 +24,53 @@ const Session = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
+  const [selectedClub, setSelectedClub] = useState(null);
 
-  const bookings = {
-    "Court 1": [9, 10],
-    "Court 2": [12],
-    "Court 3": [16, 17],
+  const fetchClubsData = async (clubName) => {
+    if (!clubName) return;
+
+    try {
+      const res = await fetch(`/api/Club/getclub?name=${encodeURIComponent(clubName)}`);
+      if (!res.ok) {
+        const errMsg = await res.text();
+        throw new Error(`Fetch failed: ${res.status} ${res.statusText} - ${errMsg}`);
+      }
+
+      const data = await res.json();
+      setClubsData([data]);
+      setFormData((prev) => ({ ...prev, club_id: data.id }));
+
+      const allCourts = data.Courts.map((court) => ({
+        ...court,
+        clubId: data.id,
+        clubName: data.name,
+      }));
+      setCourts(allCourts);
+
+      const allSessions = data.Sessions.map((session) => ({
+        ...session,
+        clubId: data.id,
+        courtName: session.Courts?.name || "",
+      }));
+      setSessions(allSessions);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
   };
 
-  const myBooking = {
-    "Court 2": [13],
+  const isBooked = (courtId, hour) => {
+    return sessions.some((session) => {
+      if (!session?.court_id || !session?.time?.[0] || !session?.date) return false;
+
+      const bookedHour = parseInt(session.time[0]?.split(":")[0]);
+      const selectedHour = parseInt(hour);
+
+      return (
+        session.court_id === courtId &&
+        bookedHour === selectedHour &&
+        format(new Date(session.date), "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd")
+      );
+    });
   };
 
   const handleDateChange = (e) => {
@@ -65,15 +106,15 @@ const Session = () => {
     }
   };
 
-  const isBooked = (court, hour) => bookings[court]?.includes(hour);
-  const isMine = (court, hour) => myBooking[court]?.includes(hour);
-
   return (
     <main className="min-h-screen px-4 py-10 text-white bg-gray-900">
       <section className="flex items-center justify-center px-4 sm:px-6 md:px-12 py-16">
         <div className="flex flex-col md:flex-row items-center gap-10 max-w-6xl w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white">Welcome <br /><p>Book your sessions here</p></h1>
-          <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80  shrink-0">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white">
+            Welcome <br />
+            <p>Book your sessions here</p>
+          </h1>
+          <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 shrink-0">
             <div className="relative w-60 h-60">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-teal-300 to-orange-300 opacity-80 blur-3xl z-0"></div>
               <DecayCard width={300} height={300} image="https://picsum.photos/300/400?grayscale">
@@ -97,24 +138,26 @@ const Session = () => {
 
         <div className="flex flex-col">
           <label htmlFor="club_id" className="text-lg mb-1 text-white">Select Club:</label>
-          <select
+          <Select
             id="club_id"
-            required
-            value={formData.club_id}
-            onChange={handleChange}
-            className="text-black px-4 py-2 rounded-lg"
-          >
-            <option value="">Select your club</option>
-            <option value="1">Goan</option>
-            <option value="2">Padel254</option>
-            <option value="3">Premium</option>
-            <option value="4">Padelpoint</option>
-            <option value="5">Nanyuki</option>
-          </select>
+            options={["Goan", "Padel254", "Premium", "Padelpoint", "Nanyuki"].map(name => ({
+              value: name,
+              label: name,
+            }))}
+            onChange={(selectedOption) => setSelectedClub(selectedOption)}
+            className="text-black w-72"
+            placeholder="Search or select club"
+          />
         </div>
+
+        <button
+          onClick={() => fetchClubsData(selectedClub?.value)}
+          className="mt-6 bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg"
+        >
+          Search
+        </button>
       </div>
 
-      {/* Table */}
       <div className="w-full px-4 sm:px-8">
         <div className="overflow-x-auto mx-auto max-w-5xl">
           <div className="min-w-[700px]">
@@ -123,41 +166,34 @@ const Session = () => {
                 <tr className="bg-teal-700 text-white">
                   <th className="border px-1 py-2 w-20">Court</th>
                   {hours.map((hour) => (
-                    <th key={hour} className="border px-1 py-2 w-16">
-                      {hour}:00
-                    </th>
+                    <th key={hour} className="border px-1 py-2 w-16">{hour}:00</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {courts.map((court) => (
-                  <tr key={court}>
-                    <td className="border px-1 py-2 font-semibold w-20">{court}</td>
+                  <tr key={court.name}>
+                    <td className="border px-1 py-2 font-semibold w-20">{court.name}</td>
                     {hours.map((hour) => {
-                      const booked = isBooked(court, hour);
-                      const mine = isMine(court, hour);
-                      const bgColor = mine
-                        ? "bg-green-500"
-                        : booked
-                        ? "bg-blue-500"
-                        : "bg-white";
-
-                      const textColor = mine || booked ? "text-white" : "text-black";
-                      const isDisabled = booked || mine;
+                      const booked = isBooked(court.id, hour);
+                      const bgColor = booked ? "bg-blue-500" : "bg-green-500";
+                      const textColor = "text-white";
 
                       return (
                         <td
-                          key={`${court}-${hour}`}
+                          title={`Court: ${court.name}`}
+                          key={`${court.name}-${hour}`}
                           className={`border px-2 py-8 w-16 cursor-pointer ${bgColor} ${textColor} ${
-                            isDisabled ? "opacity-60 cursor-not-allowed" : "hover:ring-2 ring-yellow-300"
+                            booked ? "opacity-60 cursor-not-allowed" : "hover:ring-2 ring-yellow-300"
                           }`}
                           onClick={() => {
-                            if (!isDisabled) {
-                              setSelectedSlot({ court, hour });
+                            if (!booked) {
+                              setSelectedSlot({ court: court.name, hour });
                               setFormData({
                                 ...formData,
                                 time: [`${hour}:00`],
-                                court_id: `${courts.indexOf(court) + 1}`
+                                court_id: `${court.id}`,
+                                club_id: `${court.clubId}`,
                               });
                               setSubmitted(false);
                             }

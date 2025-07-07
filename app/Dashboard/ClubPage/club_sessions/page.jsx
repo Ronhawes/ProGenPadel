@@ -68,7 +68,7 @@ export default function ResourcesPage() {
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-4 sm:px-6 lg:px-12 py-16 text-teal-400">
       <p className="fade-in text-3xl sm:text-4xl md:text-5xl font-bold text-teal-400 mb-6">
-        My Booked Sessions
+        Sessions Done
       </p>
 
       <div ref={ref} className="relative">

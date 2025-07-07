@@ -24,7 +24,7 @@ export default function PlayerPage() {
           {/* Text Section */}
           <div className="text-left space-y-6 max-w-xl w-full">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white">
-              Welcome Back {name}
+            {name} sports Complex
             </h1>
             <p className="text-lg sm:text-xl text-teal-400 font-semibold">
               Explore your dashboard and stay updated with upcoming sessions.
