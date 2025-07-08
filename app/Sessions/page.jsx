@@ -1,12 +1,13 @@
 "use client";
 
 export const dynamic = "force-dynamic";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Select from "react-select";
 import Image from "next/image";
 import DecayCard from "@/page.jsx/DecayCard/DecayCard";
 import { format } from "date-fns";
 import headshot from "../../public/headshot.png";
+import { motion } from 'framer-motion';
 
 
 const hours = Array.from({ length: 16 }, (_, i) => i + 7);
@@ -27,6 +28,8 @@ const Session = () => {
   const [submitted, setSubmitted] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [selectedClub, setSelectedClub] = useState(null);
+ 
+
 
   const fetchClubsData = async (clubName) => {
     if (!clubName) return;
@@ -111,21 +114,33 @@ const Session = () => {
   return (
     <main className="min-h-screen px-4 py-10 text-white bg-gray-900">
       <section className="flex items-center justify-center px-4 sm:px-6 md:px-12 py-16">
-        <div className="flex flex-col md:flex-row items-center gap-10 max-w-6xl w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white">
-            Welcome <br />
-            <p>Book your sessions here</p>
-          </h1>
-          <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 shrink-0">
-            <div className="relative w-60 h-60">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-teal-300 to-orange-300 opacity-80 blur-3xl z-0"></div>
-              <DecayCard width={300} height={300} image="https://picsum.photos/300/400?grayscale">
-                <h2>PRoGen<br />Padel</h2>
-              </DecayCard>
-            </div>
-          </div>
-        </div>
-      </section>
+                    <div className="flex flex-col md:flex-row items-center gap-10 max-w-6xl w-full">
+                      {/* Text Section */}
+                      <div className="text-left space-y-6 max-w-xl w-full">
+                        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white">
+                          Welcome  
+                        </h1>
+                        <p className="text-lg sm:text-xl text-teal-400 font-semibold">
+                          Explore  and stay updated with upcoming sessions.
+                        </p>
+                        
+                      </div>
+            
+                      {/* Image Section */}
+                      <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full ring-4 ring-white shrink-0">
+                                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 via-teal-300 via-30% to-orange-300 opacity-80 blur-3xl z-0"></div>
+                                 <Image
+                                   src={headshot}
+                                   alt="Headshot"
+                                   fill
+                                   className="object-cover rounded-full relative z-10"
+                                   priority
+                                 />
+                               </div>
+                             </div>
+                   
+      
+                  </section>
 
       <div className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
         <div className="flex flex-col">
