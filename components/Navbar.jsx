@@ -128,7 +128,7 @@ export const Navbar = () => {
         </Popover.Panel>
       </Transition>
     </Popover>
-    <SplashCursor/>
+    
     </>
   );
 };
