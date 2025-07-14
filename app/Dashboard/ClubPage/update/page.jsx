@@ -77,7 +77,7 @@ const UpdateClubForm = () => {
             className="rounded-full shadow-lg"
           />
           <h2 className="text-xl sm:text-3xl font-bold text-teal-300 mt-4">
-            Update Club Credentials
+            Update Club details
           </h2>
           <p className="text-white text-sm sm:text-base">
             Change your club&#39;s password
