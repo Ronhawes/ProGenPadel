@@ -102,7 +102,7 @@ const UpdateClubForm = () => {
 
           <div>
             <label htmlFor="password" className="block font-semibold mb-1 text-white">
-              New Password
+            Repeat password Password
             </label>
             <input
               id="password"
