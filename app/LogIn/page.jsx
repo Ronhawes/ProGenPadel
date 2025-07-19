@@ -88,7 +88,7 @@ const LoginPage = () => {
             name="role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="w-full px-4 py-3 rounded bg-balck text-teal-400 border border-white/20 backdrop-blur-sm"
+            className="w-full px-4 py-3 rounded bg-balck text-teal-400 border border-black backdrop-blur-sm"
           >
             <option value="Player">Player</option>
             <option value="Coach">Coach</option>

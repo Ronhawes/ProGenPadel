@@ -132,7 +132,7 @@ const SignupForm = () => {
               required
               value={formData.club_id}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded bg-white/20 text-black border border-white/20 backdrop-blur-sm"
+              className="w-full px-4 py-3 rounded bg-black text-black border border-white/20 backdrop-blur-sm"
             >
               <option value="">Select your club</option>
               <option value="1">Goan</option>
