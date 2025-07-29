@@ -88,7 +88,7 @@ export default function Home() {
     Our team
   </h1>
   <p className="text-lg sm:text-xl text-teal-400 font-semibold mt-4">
-   All  members. 
+   All team members. 
   </p>
 </section>
 
