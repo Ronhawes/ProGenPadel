@@ -9,7 +9,7 @@ import SplashScreen from "../components/SplashScreen"
 import background from "../public/background.png"
 
 
-import Aurora from "@/components/Aurora"
+
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()

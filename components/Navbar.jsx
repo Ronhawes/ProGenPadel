@@ -49,7 +49,7 @@ export const Navbar = () => {
             {[
               
               { name: "LogIn", href: "/LogIn" },
-              { name: "SigUp", href: "/SignUp" },
+              { name: "SignUp", href: "/SignUp" },
               
             ].map(({ name, href }) => (
               <Link
