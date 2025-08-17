@@ -57,7 +57,7 @@ export default function Home() {
                     className="mt-4 px-6 py-3 text-white bg-teal-500 hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition"
                     onClick={() => router.push("/Sessions")}
                   >
-                     Session booking
+                     Sessionbooking
                   </motion.button>
                 </div>
       
