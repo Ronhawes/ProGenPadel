@@ -68,7 +68,7 @@ export default function Home() {
                   width={300} 
                   height={300}
                   image="https://picsum.photos/300/400?grayscale">
-                      <h2>PRoGen<br/>Padel</h2>
+                      <h2>PRo Gen<br/>Padel</h2>
                   </DecayCard>
                 </div>
               </div>
