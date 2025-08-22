@@ -19,7 +19,7 @@ export const Navbar = () => {
             <Link href="/" className="flex items-center space-x-2">
               <IoTennisball className="text-3xl sm:text-4xl text-white" />
               <span className="text-2xl sm:text-3xl font-bold text-teal-400">
-                ProGenPadel
+                Playon
               </span>
             </Link>
           </div>

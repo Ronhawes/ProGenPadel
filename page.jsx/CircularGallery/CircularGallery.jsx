@@ -391,32 +391,31 @@ class App {
 		const defaultItems = [
 			{
 				image: Coach10Url,
-				text: "Padel Vibes And Inshallah",
+				text: "Maureen - Headcoach",
 			},
 			{
 				image: Coach1Url,
-				text: "Andana",
+				text: "Sydney -Manager",
 			},
 			{
-				image: Coach9Url,
-				text: "Our players",
+				image:"Brean",
 			},
 			{
 				image: Coach2Url,
-				text: "Padelatico",
+				text: "Sam",
 			},
 			
 			{
 				image: Coach8Url,
-				text: "Women in padel",
+				text: "isaack",
 			},
 			{
 				image: Coach3Url,
-				text: "Partick mouratoglou",
+				text: "Ronnie",
 			},
 			{
 				image: Coach7Url,
-				text: "Jonnhy",
+				text: "Capalot",
 			},
 			{
 				image: Coach4Url,
