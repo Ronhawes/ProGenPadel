@@ -136,7 +136,7 @@ export async function PUT(req) {
         transactionDate: metadata.TransactionDate,
       };
 
-      console.log("Payment Success:", paymentData);
+      console.log("Payment Successfull:", pay mentData);
 
       // TODO: Save paymentData in your DB
 
