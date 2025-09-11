@@ -149,7 +149,7 @@ export async function PUT(req) {
         { status: 200 }
       );
     } else {
-      console.error("Payment unsuccessful:", ResultDesc);
+      console.error("Payment not successful:", ResultDesc);
       return new Response(
         JSON.stringify({
           success: false,
