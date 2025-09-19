@@ -163,7 +163,7 @@ export async function PUT(req) {
     return new Response(
       JSON.stringify({
         success: false,
-        message: "Server error handling callback info",
+        message: "Server error handling callback ",
       }),
       { status: 500 }
     );
