@@ -159,7 +159,7 @@ export async function PUT(req) {
       );
     }
   } catch (error) {
-    console.error("Error handling callback:", error.message);
+    console.error("Error handling callback errors:", error.message);
     return new Response(
       JSON.stringify({
         success: false,
